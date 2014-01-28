@@ -530,13 +530,18 @@ class lime_test
     $this->results['tests'][$this->test_nb]['error'] = implode("\n", $errors);
   }
 
+  private function is_test_object($object)
+  {
+    return $object instanceof lime_test || $object instanceof sfTestFunctionalBase || $object instanceof sfTester;
+  }
+
   protected function find_caller($traces)
   {
     // find the first call to a method of an object that is an instance of lime_test
     $t = array_reverse($traces);
     foreach ($t as $trace)
     {
-      if (isset($trace['object']) && $trace['object'] instanceof lime_test)
+      if (isset($trace['object']) && $this->is_test_object($trace['object']))
       {
         return array($trace['file'], $trace['line']);
       }
@@ -684,10 +689,35 @@ class lime_output
   {
     if ($colorize)
     {
-      $message = preg_replace('/(?:^|\.)((?:not ok|dubious|errors) *\d*)\b/e', '$this->colorizer->colorize(\'$1\', \'ERROR\')', $message);
-      $message = preg_replace('/(?:^|\.)(ok *\d*)\b/e', '$this->colorizer->colorize(\'$1\', \'INFO\')', $message);
-      $message = preg_replace('/"(.+?)"/e', '$this->colorizer->colorize(\'$1\', \'PARAMETER\')', $message);
-      $message = preg_replace('/(\->|\:\:)?([a-zA-Z0-9_]+?)\(\)/e', '$this->colorizer->colorize(\'$1$2()\', \'PARAMETER\')', $message);
+      $colorizer = $this->colorizer;
+      $message = preg_replace_callback(
+        '/(?:^|\.)((?:not ok|dubious|errors) *\d*)\b/',
+        function ($match) use ($colorizer) {
+          return $colorizer->colorize($match[1], 'ERROR');
+        },
+        $message
+      );
+      $message = preg_replace_callback(
+        '/(?:^|\.)(ok *\d*)\b/',
+        function ($match) use ($colorizer) {
+          return $colorizer->colorize($match[1], 'INFO');
+        },
+        $message
+      );
+      $message = preg_replace_callback(
+        '/"(.+?)"/',
+        function ($match) use ($colorizer) {
+          return $colorizer->colorize($match[1], 'PARAMETER');
+        },
+        $message
+      );
+      $message = preg_replace_callback(
+        '/(\->|\:\:)?([a-zA-Z0-9_]+?)\(\)/',
+        function ($match) use ($colorizer) {
+          return $colorizer->colorize($match[1].$match[2].'()', 'PARAMETER');
+        },
+        $message
+      );
     }
 
     echo ($colorizer_parameter ? $this->colorizer->colorize($message, $colorizer_parameter) : $message)."\n";
