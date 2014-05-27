@@ -266,7 +266,9 @@ class sfValidatorDate extends sfValidatorBase
       $ex->setWrappedException($e);
       throw $ex;
     }
-    $date->setTimezone(new DateTimeZone(date_default_timezone_get()));
+    if ($this->getOption('with_time')) {
+      $date->setTimezone(new DateTimeZone(date_default_timezone_get()));
+    }
     return array($date, $date->format('YmdHis'));
   }
 }
