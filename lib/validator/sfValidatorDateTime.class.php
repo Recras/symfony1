@@ -27,4 +27,16 @@ class sfValidatorDateTime extends sfValidatorDate
 
     $this->setOption('with_time', true);
   }
+
+  protected function cleanInputString($value)
+  {
+    try {
+      $date = new DateTime($value);
+    } catch (Exception $e) {
+      $ex = new sfParseException(sprintf('Wrapped %s: %s', get_class($e), $e->getMessage()));
+      $ex->setWrappedException($e);
+      throw $ex;
+    }
+    return array($date, $date->format('YmdHis'));
+  }
 }
