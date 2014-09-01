@@ -34,7 +34,7 @@ class sfFactoryConfigHandler extends sfYamlConfigHandler
   public function execute($configFiles)
   {
     // parse the yaml
-    $config = self::getConfiguration($configFiles);
+    $config = static::getConfiguration($configFiles);
 
     // init our data and includes arrays
     $includes  = array();
@@ -219,8 +219,7 @@ class sfFactoryConfigHandler extends sfYamlConfigHandler
           $instances[] = sprintf(
                         "if (!class_exists('Swift')) {\n".
                         "  \$swift_dir = sfConfig::get('sf_swiftmailer_dir', sfConfig::get('sf_symfony_lib_dir').'/vendor/swiftmailer/lib');\n".
-                        "  require_once \$swift_dir.'/classes/Swift.php';\n".
-                        "  Swift::registerAutoload(\$swift_dir.'/swift_init.php');\n".
+                        "  require_once \$swift_dir.'/swift_required.php';\n".
                         "}\n".
                         "\$this->setMailerConfiguration(array_merge(array('class' => sfConfig::get('sf_factory_mailer', '%s')), sfConfig::get('sf_factory_mailer_parameters', %s)));\n"
                         , $class, var_export($parameters, true));
@@ -250,13 +249,13 @@ class sfFactoryConfigHandler extends sfYamlConfigHandler
    */
   static public function getConfiguration(array $configFiles)
   {
-    $config = self::replaceConstants(self::flattenConfigurationWithEnvironment(self::parseYamls($configFiles)));
+    $config = static::replaceConstants(static::flattenConfigurationWithEnvironment(static::parseYamls($configFiles)));
 
     foreach ($config as $factory => $values)
     {
       if (isset($values['file']))
       {
-        $config[$factory]['file'] = self::replacePath($values['file']);
+        $config[$factory]['file'] = static::replacePath($values['file']);
       }
     }
 
