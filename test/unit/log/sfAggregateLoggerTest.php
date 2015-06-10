@@ -18,7 +18,7 @@ require_once(__DIR__.'/../../../lib/util/sfToolkit.class.php');
 $file = sys_get_temp_dir().DIRECTORY_SEPARATOR.'sf_log_file.txt';
 if (file_exists($file))
 {
-  unlink($file);
+  sfToolkit::safeUnlink($file);
 }
 $fileLogger = new sfFileLogger($dispatcher, array('file' => $file));
 $buffer = fopen('php://memory', 'rw');
@@ -54,4 +54,4 @@ $t->is($logger->getLoggers(), array($fileLogger, $streamLogger), '->addLoggers()
 $t->diag('->shutdown()');
 $logger->shutdown();
 
-unlink($file);
+sfToolkit::safeUnlink($file);

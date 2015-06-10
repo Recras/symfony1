@@ -302,7 +302,7 @@ class sfFileCache extends sfCache
     {
       if (copy($tmpFile, $path))
       {
-        unlink($tmpFile);
+        sfToolkit::safeUnlink($tmpFile);
       }
     }
 

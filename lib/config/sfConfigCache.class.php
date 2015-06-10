@@ -358,7 +358,7 @@ class sfConfigCache
     {
       if (copy($tmpFile, $cache))
       {
-        unlink($tmpFile);
+        sfToolkit::safeUnlink($tmpFile);
       }
     }
 

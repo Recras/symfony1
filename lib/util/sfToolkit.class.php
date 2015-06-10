@@ -47,6 +47,21 @@ class sfToolkit
   }
 
   /**
+  * Delete a file without race condtions
+  *
+  * @param file An absolute location to a file
+  */
+  public static function safeUnlink($file)
+  {
+    @unlink($file); // supress errors. We later check if the deleted file still exists
+    clearstatcache(true, $file);
+    if(file_exists($file))
+    {
+      throw new Exception('Could not delete file: ' . $file);
+    }
+  }
+
+  /**
    * Clear all files in a given directory.
    *
    * @param string $directory  An absolute filesystem path to a directory.
@@ -71,7 +86,7 @@ class sfToolkit
         if (is_link($directory.'/'.$file))
         {
           // delete symlink
-          unlink($directory.'/'.$file);
+          sfToolkit::safeUnlink($directory.'/'.$file);
         }
         else if (is_dir($directory.'/'.$file))
         {
@@ -84,7 +99,7 @@ class sfToolkit
         else
         {
           // delete the file
-          unlink($directory.'/'.$file);
+          sfToolkit::safeUnlink($directory.'/'.$file);
         }
       }
     }
@@ -118,7 +133,7 @@ class sfToolkit
       else
       {
         // delete file
-        unlink($file);
+        sfToolkit::safeUnlink($file);
       }
     }
   }

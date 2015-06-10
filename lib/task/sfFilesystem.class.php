@@ -143,7 +143,7 @@ class sfFilesystem
       {
         $this->logSection(is_link($file) ? 'link-' : 'file-', $file);
 
-        unlink($file);
+        sfToolkit::safeUnlink($file);
       }
     }
   }
@@ -214,7 +214,7 @@ class sfFilesystem
     {
       if (readlink($targetDir) != $originDir)
       {
-        unlink($targetDir);
+        sfToolkit::safeUnlink($targetDir);
       }
       else
       {

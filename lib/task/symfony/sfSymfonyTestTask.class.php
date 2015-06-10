@@ -55,7 +55,7 @@ EOF;
     {
       foreach ($files as $file)
       {
-        unlink($file);
+        sfToolkit::safeUnlink($file);
       }
     }
 

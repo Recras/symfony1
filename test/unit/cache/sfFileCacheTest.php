@@ -16,7 +16,7 @@ $t = new lime_test(65);
 // setup
 sfConfig::set('sf_logging_enabled', false);
 $temp = tempnam('/tmp/cache_dir', 'tmp');
-unlink($temp);
+sfToolkit::safeUnlink($temp);
 mkdir($temp);
 
 // ->initialize()

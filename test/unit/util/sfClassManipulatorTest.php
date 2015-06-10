@@ -145,7 +145,7 @@ $m->wrapMethod('foo', '', '// code after');
 $m->save();
 $t->is(fix_linebreaks(file_get_contents($file)), fix_linebreaks($sourceWithCodeAfter), '->save() saves the modified code if a file is associated with the instance');
 
-unlink($file);
+sfToolkit::safeUnlink($file);
 
 // ->filterMethod()
 $t->diag('->filterMethod()');

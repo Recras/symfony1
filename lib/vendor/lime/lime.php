@@ -939,7 +939,7 @@ EOF
       // see http://trac.symfony-project.org/ticket/5437 for the explanation on the weird "cd" thing
       passthru(sprintf('cd & %s %s 2>&1', escapeshellarg($this->php_cli), escapeshellarg($test_file)), $return);
       ob_end_clean();
-      unlink($test_file);
+      sfToolkit::safeUnlink($test_file);
 
       $output = file_get_contents($result_file);
       $stats['output'] = $output ? unserialize($output) : '';
@@ -947,7 +947,7 @@ EOF
       {
         $stats['output'] = array(array('file' => $file, 'tests' => array(), 'stats' => array('plan' => 1, 'total' => 1, 'failed' => array(0), 'passed' => array(), 'skipped' => array(), 'errors' => array())));
       }
-      unlink($result_file);
+      sfToolkit::safeUnlink($result_file);
 
       $file_stats = &$stats['output'][0]['stats'];
 
@@ -1215,7 +1215,7 @@ EOF;
 
     if (file_exists($tmp_file))
     {
-      unlink($tmp_file);
+      sfToolkit::safeUnlink($tmp_file);
     }
   }
 

@@ -298,6 +298,6 @@ $f = new sfValidatedFile('test', 'text/plain', $tmpDir.'/test.txt', strlen($cont
 $t->is($f->getOriginalExtension(), '', '->getOriginalExtension() returns an empty extension if the uploaded file name has no extension');
 $t->is($f->getOriginalExtension('bin'), 'bin', '->getOriginalExtension() takes a default extension as its first argument');
 
-unlink($tmpDir.'/test.txt');
+sfToolkit::safeUnlink($tmpDir.'/test.txt');
 sfToolkit::clearDirectory($tmpDir.'/foo');
 rmdir($tmpDir.'/foo');

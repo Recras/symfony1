@@ -16,7 +16,7 @@ require_once(__DIR__.'/../../../lib/util/sfToolkit.class.php');
 $file = sys_get_temp_dir().DIRECTORY_SEPARATOR.'sf_log_file.txt';
 if (file_exists($file))
 {
-  unlink($file);
+  sfToolkit::safeUnlink($file);
 }
 
 $dispatcher = new sfEventDispatcher();
@@ -58,26 +58,26 @@ class TestLogger extends sfFileLogger
 
 // option: format
 $t->diag('option: format');
-unlink($file);
+sfToolkit::safeUnlink($file);
 $logger = new TestLogger($dispatcher, array('file' => $file));
 $logger->log('foo');
 $t->is(file_get_contents($file), strftime($logger->getTimeFormat()).' symfony [*6*] foo'.PHP_EOL, '->initialize() can take a format option');
 
-unlink($file);
+sfToolkit::safeUnlink($file);
 $logger = new TestLogger($dispatcher, array('file' => $file, 'format' => '%message%'));
 $logger->log('foo');
 $t->is(file_get_contents($file), 'foo', '->initialize() can take a format option');
 
 // option: time_format
 $t->diag('option: time_format');
-unlink($file);
+sfToolkit::safeUnlink($file);
 $logger = new TestLogger($dispatcher, array('file' => $file, 'time_format' => '%Y %m %d'));
 $logger->log('foo');
 $t->is(file_get_contents($file), strftime($logger->getTimeFormat()).' symfony [*6*] foo'.PHP_EOL, '->initialize() can take a format option');
 
 // option: type
 $t->diag('option: type');
-unlink($file);
+sfToolkit::safeUnlink($file);
 $logger = new TestLogger($dispatcher, array('file' => $file, 'type' => 'foo'));
 $logger->log('foo');
 $t->is(file_get_contents($file), strftime($logger->getTimeFormat()).' foo [*6*] foo'.PHP_EOL, '->initialize() can take a format option');
@@ -86,4 +86,4 @@ $t->is(file_get_contents($file), strftime($logger->getTimeFormat()).' foo [*6*] 
 $t->diag('->shutdown()');
 $logger->shutdown();
 
-unlink($file);
+sfToolkit::safeUnlink($file);

@@ -27,7 +27,7 @@ require_once __DIR__.'/sfPluginTestHelper.class.php';
 
 // setup
 $temp = tempnam('/tmp/sf_plugin_test', 'tmp');
-unlink($temp);
+sfToolkit::safeUnlink($temp);
 mkdir($temp, 0777, true);
 
 define('SF_PLUGIN_TEST_DIR', $temp);

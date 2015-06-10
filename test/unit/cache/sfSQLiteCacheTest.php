@@ -49,7 +49,7 @@ sfCacheDriverTests::launch($t, $cache);
 
 // database on disk
 $database = tempnam('/tmp/cachedir', 'tmp');
-unlink($database);
+sfToolkit::safeUnlink($database);
 $cache = new sfSQLiteCache(array('database' => $database));
 sfCacheDriverTests::launch($t, $cache);
-unlink($database);
+sfToolkit::safeUnlink($database);

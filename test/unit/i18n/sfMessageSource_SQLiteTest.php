@@ -31,7 +31,7 @@ function sf_test_shutdown()
 
   if (file_exists($temp))
   {
-    unlink($temp);
+    sfToolkit::safeUnlink($temp);
   }
 }
 

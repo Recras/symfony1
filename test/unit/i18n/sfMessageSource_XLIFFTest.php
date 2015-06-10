@@ -14,7 +14,7 @@ $t = new lime_test(11);
 
 // setup
 $temp = tempnam('/tmp/i18ndir', 'tmp');
-unlink($temp);
+sfToolkit::safeUnlink($temp);
 mkdir($temp);
 
 // copy fixtures to tmp directory

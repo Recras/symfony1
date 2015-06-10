@@ -131,7 +131,7 @@ class sfAutoload
       {
         if (file_exists($configuration->getConfigCache()->getCacheName('config/autoload.yml')))
         {
-          unlink($configuration->getConfigCache()->getCacheName('config/autoload.yml'));
+          sfToolkit::safeUnlink($configuration->getConfigCache()->getCacheName('config/autoload.yml'));
         }
       }
     }
