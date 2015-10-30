@@ -62,7 +62,14 @@ class sfDatabaseManager
    */
   public function loadConfiguration()
   {
-    if ($this->configuration instanceof sfApplicationConfiguration)
+    if (!empty($_SERVER['DOCTRINE_DSN']))
+    {
+      $databases = array('doctrine' => new sfDoctrineDatabase(array(
+        'name' => 'doctrine',
+        'dsn' => $_SERVER['DOCTRINE_DSN'],
+      )));
+    }
+    elseif ($this->configuration instanceof sfApplicationConfiguration)
     {
       $databases = include($this->configuration->getConfigCache()->checkConfig('config/databases.yml'));
     }
