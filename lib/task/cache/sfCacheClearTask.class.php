@@ -245,16 +245,16 @@ EOF;
   protected function lock($app, $env)
   {
     // create a lock file
-    $this->getFilesystem()->touch($this->getLockFile($app, $env));
+    // $this->getFilesystem()->touch($this->getLockFile($app, $env));
 
     // change mode so the web user can remove it if we die
-    $this->getFilesystem()->chmod($this->getLockFile($app, $env), 0777);
+    // $this->getFilesystem()->chmod($this->getLockFile($app, $env), 0777);
   }
 
   protected function unlock($app, $env)
   {
     // release lock
-    $this->getFilesystem()->remove($this->getLockFile($app, $env));
+    // $this->getFilesystem()->remove($this->getLockFile($app, $env));
   }
 
   protected function getLockFile($app, $env)
