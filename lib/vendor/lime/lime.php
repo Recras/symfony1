@@ -938,6 +938,7 @@ EOF
       ob_start();
       // see http://trac.symfony-project.org/ticket/5437 for the explanation on the weird "cd" thing
       passthru(sprintf('cd & %s %s 2>&1', escapeshellarg($this->php_cli), escapeshellarg($test_file)), $return);
+      $cmdOutput = ob_get_contents();
       ob_end_clean();
       sfToolkit::safeUnlink($test_file);
 
@@ -991,6 +992,7 @@ EOF
       if ('dubious' == $stats['status'])
       {
         $this->output->echoln(sprintf('    Test returned status %s', $stats['status_code']));
+        echo $cmdOutput;
       }
 
       if ('ok' != $stats['status'])
@@ -1015,6 +1017,7 @@ EOF
         $this->stats['failed_tests'] += count($file_stats['failed']);
 
         $this->output->echoln(sprintf("    Failed tests: %s", implode(', ', $file_stats['failed'])));
+        echo $cmdOutput;
       }
 
       if (false !== $file_stats && $file_stats['errors'])
