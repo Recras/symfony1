@@ -245,6 +245,7 @@ class sfCoreAutoload
     'sftimer' => 'debug/sfTimer.class.php',
     'sftimermanager' => 'debug/sfTimerManager.class.php',
     'sfwebdebug' => 'debug/sfWebDebug.class.php',
+    'sfwebdebugjson' => 'debug/sfWebDebugJson.class.php',
     'sfwebdebugpanel' => 'debug/sfWebDebugPanel.class.php',
     'sfwebdebugpanelcache' => 'debug/sfWebDebugPanelCache.class.php',
     'sfwebdebugpanelconfig' => 'debug/sfWebDebugPanelConfig.class.php',

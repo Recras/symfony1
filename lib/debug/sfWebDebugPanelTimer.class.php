@@ -59,6 +59,20 @@ class sfWebDebugPanelTimer extends sfWebDebugPanel
     }
   }
 
+  public function getPanelArray()
+  {
+    $content = array(
+      'total' => $this->getTotalTime(),
+    );
+    foreach (sfTimerManager::getTimers() as $name => $timer) {
+      $content[$name] = array(
+        'calls' => $timer->getCalls(),
+        'time' => $timer->getElapsedTime() * 1000,
+      );
+    }
+    return $content;
+  }
+
   public function filterLogs(sfEvent $event, $logs)
   {
     $newLogs = array();

@@ -62,6 +62,11 @@ abstract class sfWebDebugPanel
    */
   abstract public function getPanelContent();
 
+  public function getPanelArray()
+  {
+    return array('Not implemented');
+  }
+
   /**
    * Returns the current status.
    * 

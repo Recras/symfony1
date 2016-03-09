@@ -58,6 +58,19 @@ class sfWebDebugPanelDoctrine extends sfWebDebugPanel
     ';
   }
 
+  public function getPanelArray()
+  {
+    $content = array();
+    foreach ($this->getDoctrineEvents() as $iter => $event) {
+      $content[$iter] = array(
+        'query' => $event->getQuery(),
+        'params' => sfDoctrineConnectionProfiler::fixParams($event->getParams()),
+        'time' => $event->getElapsedSecs(),
+      );
+    }
+    return $content;
+  }
+
   /**
    * Listens to debug.web.load_panels and adds this panel.
    */
