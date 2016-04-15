@@ -553,9 +553,13 @@ class sfNumberFormatInfo
     {
       return $this->pattern['symbol'];
     }
-    else
+    elseif (isset($this->data['Currencies'][$currency]))
     {
       return $this->data['Currencies'][$currency][0];
+    }
+    else
+    {
+      return null;
     }
   }
 
