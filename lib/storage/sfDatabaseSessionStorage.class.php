@@ -70,7 +70,10 @@ abstract class sfDatabaseSessionStorage extends sfSessionStorage
                              array($this, 'sessionGC'));
 
     // start our session
-    session_start();
+    if (!self::$sessionStarted) {
+      session_start();
+      self::$sessionStarted = true;
+    }
   }
 
   /**
