@@ -114,6 +114,14 @@ class sfWebRequest extends sfRequest
           }
           break;
 
+        case 'PATCH':
+          $this->setMethod(self::PATCH);
+          if ('application/x-www-form-urlencoded' === $this->getContentType())
+          {
+            parse_str($this->getContent(), $postParameters);
+          }
+          break;
+
         case 'DELETE':
           $this->setMethod(self::DELETE);
           if ('application/x-www-form-urlencoded' === $this->getContentType())
@@ -124,6 +132,10 @@ class sfWebRequest extends sfRequest
 
         case 'HEAD':
           $this->setMethod(self::HEAD);
+          break;
+
+        case 'OPTIONS':
+          $this->setMethod(self::OPTIONS);
           break;
 
         default:
@@ -204,7 +216,7 @@ class sfWebRequest extends sfRequest
   {
     $pathArray = $this->getPathInfoArray();
 
-    return isset($pathArray['REQUEST_URI']) ? preg_match('/^http/', $pathArray['REQUEST_URI']) : false;
+    return isset($pathArray['REQUEST_URI']) ? 0 === strpos($pathArray['REQUEST_URI'], 'http') : false;
   }
 
   /**
@@ -461,7 +473,7 @@ class sfWebRequest extends sfRequest
     $languages = $this->splitHttpAcceptHeader($_SERVER['HTTP_ACCEPT_LANGUAGE']);
     foreach ($languages as $lang)
     {
-      if (strstr($lang, '-'))
+      if (false !== strpos($lang, '-'))
       {
         $codes = explode('-', $lang);
         if ($codes[0] == 'i')
@@ -567,7 +579,7 @@ class sfWebRequest extends sfRequest
       $prefix = strtoupper($prefix).'_';
     }
 
-    $name = $prefix.strtoupper(strtr($name, '-', '_'));
+    $name = $prefix.strtoupper(str_replace('-', '_', $name));
 
     $pathArray = $this->getPathInfoArray();
 
@@ -979,7 +991,7 @@ class sfWebRequest extends sfRequest
 
       if ($this->getOption('trust_proxy') && ($ip = $this->getForwardedFor()))
       {
-        return isset($ip[0]) ? trim($ip[0]) : '';;
+        return isset($ip[0]) ? trim($ip[0]) : '';
       }
     }
 

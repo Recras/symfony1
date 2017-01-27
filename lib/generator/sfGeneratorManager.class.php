@@ -80,13 +80,14 @@ class sfGeneratorManager
   {
     $path = $this->getBasePath().DIRECTORY_SEPARATOR.$path;
 
-    if (!is_dir(dirname($path)))
+    $cacheDir = dirname($path);
+    if (!is_dir($cacheDir))
     {
       $current_umask = umask(0000);
-      if (false === @mkdir(dirname($path), 0777, true) && !is_dir(dirname($path)))
+      if (!@mkdir($cacheDir, 0777, true) && !is_dir($cacheDir))
       {
         $error = error_get_last();
-        throw new sfCacheException(sprintf('Failed to make cache directory "%s", reason: %s', dirname($path), $error['message']));
+        throw new \sfCacheException(sprintf('Failed to make cache directory "%s", reason: %s', dirname($path), $error['message']));
       }
       umask($current_umask);
     }

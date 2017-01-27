@@ -610,6 +610,11 @@ class sfForm implements ArrayAccess, Iterator, Countable
    */
   public function setValidator($name, sfValidatorBase $validator)
   {
+    if (isset($this->embeddedForms[$name]))
+    {
+      throw new LogicException('You cannot set a validator for an embedded form.');
+    }
+
     $this->validatorSchema[$name] = $validator;
 
     $this->resetFormFields();
@@ -629,6 +634,11 @@ class sfForm implements ArrayAccess, Iterator, Countable
     if (!isset($this->validatorSchema[$name]))
     {
       throw new InvalidArgumentException(sprintf('The validator "%s" does not exist.', $name));
+    }
+
+    if (isset($this->embeddedForms[$name]))
+    {
+      return $this->embeddedForms[$name]->getValidatorSchema();
     }
 
     return $this->validatorSchema[$name];
@@ -848,7 +858,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
 
     if ($this->isCSRFProtected())
     {
-      $this->setDefault(self::$CSRFFieldName, $this->getCSRFToken($this->localCSRFSecret ? $this->localCSRFSecret : self::$CSRFSecret));
+      $this->setDefault(self::$CSRFFieldName, $this->getCSRFToken($this->localCSRFSecret ?: self::$CSRFSecret));
     }
 
     $this->resetFormFields();
@@ -918,7 +928,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
   {
     if (null === $secret)
     {
-      $secret = $this->localCSRFSecret ? $this->localCSRFSecret : self::$CSRFSecret;
+      $secret = $this->localCSRFSecret ?: self::$CSRFSecret;
     }
 
     return md5($secret.session_id().get_class($this));

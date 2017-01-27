@@ -398,6 +398,7 @@ class sfWebResponse extends sfResponse
 
     if (function_exists('fastcgi_finish_request'))
     {
+      $this->dispatcher->notify(new sfEvent($this, 'response.fastcgi_finish_request'));
       fastcgi_finish_request();
     }
   }
@@ -484,7 +485,7 @@ class sfWebResponse extends sfResponse
         $currentHeaders[$tmp[0]] = isset($tmp[1]) ? $tmp[1] : null;
       }
     }
-    $currentHeaders[strtr(strtolower($name), '_', '-')] = $value;
+    $currentHeaders[str_replace('_', '-', strtolower($name))] = $value;
 
     $headers = array();
     foreach ($currentHeaders as $key => $value)

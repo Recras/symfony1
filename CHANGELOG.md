@@ -1,15 +1,61 @@
 CHANGELOG
 =========
 
-* use late static binding for config classes.
+06/10/2016: Version 1.5.8
+-------------------------
 
-01/17/2014: Version 1.5.3
------------------------
+* PHP7 compatibility by @timmipetit #121
+* sfMemcacheCache fix #124
+* sfAutoload include fix for HHVM support #127
+* sfAutoload include: eval only if forced on HHVM #130
+* Fix phpdoc for sfDoctrineRecord::setDateTimeObject() #136
+* Fix session data losing under certain situation #139
 
-* Remove Doctrine from dependencies (add Doctrine and Propel as suggestions)
+02/02/2016: Version 1.5.7
+-------------------------
+
+* Fix error in embedded form #105
+* Added HTTP PATCH request method #110
+* Fix integers used in mt_rand() #113
+* Remove array cast from parameter of sfAction::renderJson #115
+* Don't post unnamed submit fields in sfBrowserBase #112
+* Add support for traits in autoloaders #112
+* Php Inspections (EA Extended): Static Code Analysis #111
+
+22/07/2015: Version 1.5.6
+-------------------------
+
+* Reverts #94. APCu 4.0.7+ is required for PHP 5.5+ #99
+
+18/07/2015: Version 1.5.5
+-------------------------
+
+* Static Code Analysis with Php Inspections #97
+* Change log level of sfException to CRITICAL #96
+
+15/06/2015: Version 1.5.4
+-------------------------
+
+* Add blob support to yaml files #38
+* Ability to integrate a psr compliant log #71
+* Add OPTIONS method in sfRequest #75
+* Add multiple file input #86
+* Allows newer versions of Swiftmailer #90
+* Allow to specify environment in sfI18nExtractTask #92
+
+17/09/2014: Version 1.5.3
+-------------------------
+
+* Use late static binding for config classes #25
+* Remove Doctrine from dependencies (add Doctrine and Propel as suggestions) #35
+* Add relative option for PublishAssetsTask #43
+* Add an option to test:all task to show full output #55
+* Improve PHP built-in webserver compatibility #58
+* Update Swiftmailer to ~5.2.1 #59
+* Re-add Propel in sfDatabaseSessionStorage #66
 
 10/30/2013: Version 1.5.2
------------------------
+-------------------------
 
  * Drop support for PHP 5.2
  * Add support for PHP 5.5

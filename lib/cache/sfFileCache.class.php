@@ -83,7 +83,7 @@ class sfFileCache extends sfCache
    */
   public function set($key, $data, $lifetime = null)
   {
-    if ($this->getOption('automatic_cleaning_factor') > 0 && rand(1, $this->getOption('automatic_cleaning_factor')) == 1)
+    if ($this->getOption('automatic_cleaning_factor') > 0 && mt_rand(1, $this->getOption('automatic_cleaning_factor')) == 1)
     {
       $this->clean(sfCache::OLD);
     }
@@ -235,12 +235,12 @@ class sfFileCache extends sfCache
     }
 
     @flock($fp, LOCK_SH);
-    $data[self::READ_TIMEOUT] = intval(@stream_get_contents($fp, 12, 0));
+    $data[self::READ_TIMEOUT] = (int) @stream_get_contents($fp, 12, 0);
     if ($type != self::READ_TIMEOUT && time() < $data[self::READ_TIMEOUT])
     {
       if ($type & self::READ_LAST_MODIFIED)
       {
-        $data[self::READ_LAST_MODIFIED] = intval(@stream_get_contents($fp, 12, 12));
+        $data[self::READ_LAST_MODIFIED] = (int) @stream_get_contents($fp, 12, 12);
       }
       if ($type & self::READ_DATA)
       {
@@ -277,13 +277,13 @@ class sfFileCache extends sfCache
     $current_umask = umask();
     umask(0000);
 
-    if (!is_dir(dirname($path)))
+    $cacheDir = dirname($path);
+    if (!is_dir($cacheDir) && !@mkdir($cacheDir, 0777, true) && !is_dir($cacheDir))
     {
-      // create directory structure if needed
-      mkdir(dirname($path), 0777, true);
+      throw new \sfCacheException(sprintf('Cache was not able to create a directory "%s".', $cacheDir));
     }
 
-    $tmpFile = tempnam(dirname($path), basename($path));
+    $tmpFile = tempnam($cacheDir, basename($path));
 
     if (!$fp = @fopen($tmpFile, 'wb'))
     {
