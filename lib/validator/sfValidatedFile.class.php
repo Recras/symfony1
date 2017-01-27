@@ -91,10 +91,10 @@ class sfValidatedFile
 
     if (!is_readable($directory))
     {
-      if ($create && !@mkdir($directory, $dirMode, true))
+      if ($create && !@mkdir($directory, $dirMode, true) && !is_dir($directory))
       {
         // failed to create the directory
-        throw new Exception(sprintf('Failed to create file upload directory "%s".', $directory));
+        throw new \Exception(sprintf('Failed to create file upload directory "%s".', $directory));
       }
 
       // chmod the directory since it doesn't seem to work on recursive paths
@@ -131,7 +131,7 @@ class sfValidatedFile
    */
   public function generateFilename()
   {
-    return sha1($this->getOriginalName().rand(11111, 99999)).$this->getExtension($this->getOriginalExtension());
+    return sha1($this->getOriginalName().mt_rand(11111, 99999)).$this->getExtension($this->getOriginalExtension());
   }
 
   /**

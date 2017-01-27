@@ -31,7 +31,7 @@ class sfYamlInline
   {
     $value = trim($value);
 
-    if (0 == strlen($value))
+    if ('' === $value)
     {
       return '';
     }
@@ -85,7 +85,8 @@ class sfYamlInline
     switch (true)
     {
       case is_resource($value):
-        throw new InvalidArgumentException('Unable to dump PHP resources in a YAML file.');
+        return stream_get_contents($value);
+        // throw new InvalidArgumentException('Unable to dump PHP resources in a YAML file.');
       case is_object($value):
         return '!!php/object:'.serialize($value);
       case is_array($value):
@@ -99,7 +100,7 @@ class sfYamlInline
       case ctype_digit($value):
         return is_string($value) ? "'$value'" : (int) $value;
       case is_numeric($value):
-        return is_infinite($value) ? str_ireplace('INF', '.Inf', strval($value)) : (is_string($value) ? "'$value'" : $value);
+        return is_infinite($value) ? str_ireplace('INF', '.Inf', (string) $value) : (is_string($value) ? "'$value'" : $value);
       case false !== strpos($value, "\n") || false !== strpos($value, "\r"):
         return sprintf('"%s"', str_replace(array('"', "\n", "\r"), array('\\"', '\n', '\r'), $value));
       case preg_match('/[ \s \' " \: \{ \} \[ \] , & \* \# \?] | \A[ - ? | < > = ! % @ ` ]/x', $value):
@@ -133,7 +134,7 @@ class sfYamlInline
     if (
       (1 == count($keys) && '0' == $keys[0])
       ||
-      (count($keys) > 1 && array_reduce($keys, create_function('$v,$w', 'return (integer) $v + $w;'), 0) == count($keys) * (count($keys) - 1) / 2))
+      (count($keys) > 1 && array_sum(array_map('intval', $keys)) == count($keys) * (count($keys) - 1) / 2))
     {
       $output = array();
       foreach ($value as $val)
@@ -247,7 +248,7 @@ class sfYamlInline
   {
     $output = array();
     $len = strlen($sequence);
-    $i += 1;
+    ++$i;
 
     // [foo, bar, ...]
     while ($i < $len)
@@ -307,7 +308,7 @@ class sfYamlInline
   {
     $output = array();
     $len = strlen($mapping);
-    $i += 1;
+    ++$i;
 
     // {foo: bar, bar:foo, ...}
     while ($i < $len)
@@ -393,12 +394,12 @@ class sfYamlInline
       case 0 === strpos($scalar, '!str'):
         return (string) substr($scalar, 5);
       case 0 === strpos($scalar, '! '):
-        return intval(self::parseScalar(substr($scalar, 2)));
+        return (int) self::parseScalar(substr($scalar, 2));
       case 0 === strpos($scalar, '!!php/object:'):
         return unserialize(substr($scalar, 13));
       case ctype_digit($scalar):
         $raw = $scalar;
-        $cast = intval($scalar);
+        $cast = (int) $scalar;
         return '0' == $scalar[0] ? octdec($scalar) : (((string) $raw == (string) $cast) ? $cast : $raw);
       case in_array(strtolower($scalar), $trueValues):
         return true;
@@ -413,7 +414,7 @@ class sfYamlInline
         return -log(0);
       case 0 == strcasecmp($scalar, '-.inf'):
         return log(0);
-      case preg_match('/^(-|\+)?[0-9,]+(\.[0-9]+)?$/', $scalar):
+      case preg_match('/^(-|\+)?[0-9,]+(\.\d+)?$/', $scalar):
         $replaced = str_replace(',', '', $scalar);
         $replaced = str_replace('+', '', $replaced);
         $floatval = floatval($replaced);

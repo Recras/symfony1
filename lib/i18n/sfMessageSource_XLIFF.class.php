@@ -53,9 +53,7 @@ class sfMessageSource_XLIFF extends sfMessageSource_File
     libxml_use_internal_errors(true);
     if (!$xml = simplexml_load_file($filename))
     {
-      $error = false;
-
-      return $error;
+      return false;
     }
     libxml_use_internal_errors(false);
 
@@ -183,7 +181,7 @@ class sfMessageSource_XLIFF extends sfMessageSource_File
     $lastNodes = $xpath->query('//trans-unit[not(@id <= preceding-sibling::trans-unit/@id) and not(@id <= following-sibling::trans-unit/@id)]');
     if (null !== $last = $lastNodes->item(0))
     {
-      $count = intval($last->getAttribute('id'));
+      $count = (int) $last->getAttribute('id');
     }
     else
     {

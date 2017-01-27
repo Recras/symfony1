@@ -395,7 +395,7 @@ class sfToolkit
     static $isEmpty = true;
     foreach ($array as $value)
     {
-      $isEmpty = (is_array($value)) ? self::isArrayValuesEmpty($value) : (strlen($value) == 0);
+      $isEmpty = is_array($value) ? self::isArrayValuesEmpty($value) : '' === (string)$value;
       if (!$isEmpty)
       {
         break;
@@ -523,7 +523,7 @@ class sfToolkit
    */
   public static function getPhpCli()
   {
-    $path = getenv('PATH') ? getenv('PATH') : getenv('Path');
+    $path = getenv('PATH') ?: getenv('Path');
     $suffixes = DIRECTORY_SEPARATOR == '\\' ? (getenv('PATHEXT') ? explode(PATH_SEPARATOR, getenv('PATHEXT')) : array('.exe', '.bat', '.cmd', '.com')) : array('');
     foreach (array('php5', 'php') as $phpCli)
     {
@@ -628,6 +628,6 @@ class sfToolkit
         throw new InvalidArgumentException(sprintf('Unrecognized position: "%s"', $position));
     }
 
-    return set_include_path(join(PATH_SEPARATOR, $paths));
+    return set_include_path(implode(PATH_SEPARATOR, $paths));
   }
 }

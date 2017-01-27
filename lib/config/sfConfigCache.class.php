@@ -333,15 +333,16 @@ class sfConfigCache
   protected function writeCacheFile($config, $cache, $data)
   {
     $current_umask = umask(0000);
-    if (!is_dir(dirname($cache)))
+    $cacheDir      = dirname($cache);
+    if (!is_dir($cacheDir) && !@mkdir($cacheDir, 0777, true) && !is_dir($cacheDir))
     {
       if (false === @mkdir(dirname($cache), 0777, true) && !is_dir(dirname($cache)))
       {
-        throw new sfCacheException(sprintf('Failed to make cache directory "%s" while generating cache for configuration file "%s".', dirname($cache), $config));
+        throw new \sfCacheException(sprintf('Failed to make cache directory "%s" while generating cache for configuration file "%s".', dirname($cache), $config));
       }
     }
 
-    $tmpFile = tempnam(dirname($cache), basename($cache));
+    $tmpFile = tempnam($cacheDir, basename($cache));
 
     if (!$fp = @fopen($tmpFile, 'wb'))
     {
