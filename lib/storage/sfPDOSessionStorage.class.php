@@ -120,7 +120,7 @@ class sfPDOSessionStorage extends sfDatabaseSessionStorage
       else
       {
         // session does not exist, create it
-        $sql = 'INSERT INTO '.$db_table.'('.$db_id_col.', '.$db_data_col.', '.$db_time_col.') VALUES (?, ?, ?)';
+        $sql = 'REPLACE INTO '.$db_table.'('.$db_id_col.', '.$db_data_col.', '.$db_time_col.') VALUES (?, ?, ?)';
 
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(1, $id, PDO::PARAM_STR);
