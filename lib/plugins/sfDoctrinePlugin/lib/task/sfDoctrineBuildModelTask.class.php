@@ -77,7 +77,7 @@ EOF;
       $code = file_get_contents($file);
 
       // introspect the model without loading the class
-      if (preg_match_all('/@property (\w+) \$(\w+)/', $code, $matches, PREG_SET_ORDER))
+      if (preg_match_all('/@property (\S+) \$(\w+)/', $code, $matches, PREG_SET_ORDER))
       {
         $properties = array();
         foreach ($matches as $match)
