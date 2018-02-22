@@ -76,7 +76,9 @@ EOF;
       {
         if (!$options['no-confirmation'] && !$this->askConfirmation(array_merge(
           array('The following '.$modelName.' files will be deleted:', ''),
-          array_map(create_function('$v', 'return \' - \'.sfDebug::shortenFilePath($v);'), $files),
+          array_map(function($v) {
+            return ' - '.sfDebug::shortenFilePath($v);
+          }, $files),
           array('', 'Continue? (y/N)')
         ), 'QUESTION_LARGE', false))
         {
