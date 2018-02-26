@@ -69,7 +69,7 @@ abstract class sfWebDebugPanel
 
   /**
    * Returns the current status.
-   * 
+   *
    * @return integer A {@link sfLogger} priority constant
    */
   public function getStatus()
@@ -79,7 +79,7 @@ abstract class sfWebDebugPanel
 
   /**
    * Sets the current panel's status.
-   * 
+   *
    * @param integer $status A {@link sfLogger} priority constant
    */
   public function setStatus($status)
@@ -89,10 +89,10 @@ abstract class sfWebDebugPanel
 
   /**
    * Returns a toggler element.
-   * 
+   *
    * @param  string $element The value of an element's DOM id attribute
    * @param  string $title   A title attribute
-   * 
+   *
    * @return string
    */
   public function getToggler($element, $title = 'Toggle details')
@@ -102,9 +102,9 @@ abstract class sfWebDebugPanel
 
   /**
    * Returns a toggleable presentation of a debug stack.
-   * 
+   *
    * @param  array $debugStack
-   * 
+   *
    * @return string
    */
   public function getToggleableDebugStack($debugStack)
@@ -149,11 +149,11 @@ abstract class sfWebDebugPanel
 
   /**
    * Formats a file link.
-   * 
+   *
    * @param  string  $file A file path or class name
    * @param  integer $line
    * @param  string  $text Text to use for the link
-   * 
+   *
    * @return string
    */
   public function formatFileLink($file, $line = null, $text = null)
@@ -198,7 +198,7 @@ abstract class sfWebDebugPanel
    * Format a SQL string with some colors on SQL keywords to make it more readable.
    *
    * @param  string $sql    SQL string to format
-   * 
+   *
    * @return string $newSql The new formatted SQL string
    */
   public function formatSql($sql)
