@@ -193,7 +193,7 @@ class sfWebResponse extends sfResponse
   /**
    * Sets response status code.
    *
-   * @param string $code  HTTP status code
+   * @param int $code  HTTP status code
    * @param string $name  HTTP status text
    *
    */
@@ -227,7 +227,7 @@ class sfWebResponse extends sfResponse
    * Sets a HTTP header.
    *
    * @param string  $name     HTTP header name
-   * @param string  $value    Value (if null, remove the HTTP header)
+   * @param string|null  $value    Value (if null, remove the HTTP header)
    * @param bool    $replace  Replace for the value
    *
    */
