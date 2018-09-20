@@ -67,10 +67,14 @@ class sfDatabaseManager
   {
     if (!empty($_SERVER['DOCTRINE_DSN']))
     {
-      $databases = array('doctrine' => new sfDoctrineDatabase(array(
+      $parameters = array(
         'name' => 'doctrine',
         'dsn' => $_SERVER['DOCTRINE_DSN'],
-      )));
+      );
+      if (isset($this->configuration->doctrineConnectionCharset)) {
+        $parameters['encoding'] = $this->configuration->doctrineConnectionCharset;
+      }
+      $databases = array('doctrine' => new sfDoctrineDatabase($parameters));
     }
     elseif ($this->configuration instanceof sfApplicationConfiguration)
     {
