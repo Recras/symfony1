@@ -24,6 +24,8 @@ class sfValidatorUrl extends sfValidatorRegex
         ([a-z0-9-]+\.)+[a-z]{2,6}             # a domain name
           |                                   #  or
         \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}    # a IP address
+          |                                   #  or
+        ([a-z0-9-]*)                          # a local network hostname
       )
       (:[0-9]+)?                              # a port (optional)
       (/?|/\S+)                               # a /, nothing or a / with something
