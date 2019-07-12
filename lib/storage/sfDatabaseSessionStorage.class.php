@@ -65,7 +65,7 @@ abstract class sfDatabaseSessionStorage extends sfSessionStorage
       throw new sfInitializationException('You must provide a "database" option to sfDatabaseSessionStorage.');
     }
 
-    if (!self::$sessionStarted && php_sapi_name() !== 'cli' && session_status() === PHP_SESSION_NONE) {
+    if (!self::$sessionStarted && session_status() === PHP_SESSION_NONE) {
       // use this object as the session handler
       session_set_save_handler(array($this, 'sessionOpen'),
         array($this, 'sessionClose'),
