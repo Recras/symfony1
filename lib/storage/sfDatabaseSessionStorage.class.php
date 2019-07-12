@@ -65,16 +65,16 @@ abstract class sfDatabaseSessionStorage extends sfSessionStorage
       throw new sfInitializationException('You must provide a "database" option to sfDatabaseSessionStorage.');
     }
 
-    // use this object as the session handler
-    session_set_save_handler(array($this, 'sessionOpen'),
-                             array($this, 'sessionClose'),
-                             array($this, 'sessionRead'),
-                             array($this, 'sessionWrite'),
-                             array($this, 'sessionDestroy'),
-                             array($this, 'sessionGC'));
+    if (!self::$sessionStarted && session_status() === PHP_SESSION_NONE) {
+      // use this object as the session handler
+      session_set_save_handler(array($this, 'sessionOpen'),
+        array($this, 'sessionClose'),
+        array($this, 'sessionRead'),
+        array($this, 'sessionWrite'),
+        array($this, 'sessionDestroy'),
+        array($this, 'sessionGC'));
 
-    // start our session
-    if (!self::$sessionStarted) {
+      // start our session
       session_start();
       self::$sessionStarted = true;
     }
