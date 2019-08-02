@@ -68,6 +68,9 @@ class sfSessionStorage extends sfStorage
     // initialize parent
     parent::initialize($options);
 
+    if (self::$sessionStarted) {
+      return;
+    }
     // set session name
     $sessionName = $this->options['session_name'];
 
@@ -90,7 +93,7 @@ class sfSessionStorage extends sfStorage
       session_cache_limiter($this->options['session_cache_limiter']);
     }
 
-    if ($this->options['auto_start'] && !self::$sessionStarted)
+    if ($this->options['auto_start'] && !self::$sessionStarted && session_status() === PHP_SESSION_NONE)
     {
       session_start();
       self::$sessionStarted = true;
