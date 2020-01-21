@@ -11,7 +11,7 @@ All the enhancements and BC breaks are listed in the [WHATS_NEW](https://github.
 
 - [DIC](https://github.com/FriendsOfSymfony1/symfony1/wiki/ServiceContainer)
 - Composer support
-- PHP 7.2 support
+- PHP 7.4 support
 - performance boost
 - new widgets & validators
 - some tickets fixed from the symfony trac
