@@ -13,7 +13,7 @@ require_once(__DIR__.'/../../bootstrap/unit.php');
 $plan = 73;
 $t = new lime_test($plan);
 
-if (!class_exists('Memcache'))
+if (!class_exists('Memcache', false))
 {
   $t->skip('Memcache needed to run these tests', $plan);
   return;
