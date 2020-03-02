@@ -10,7 +10,14 @@
     },
     "type": "library",
     "autoload": {
-        "files": ["autoload.php"]
+        "classmap": [
+            "lib"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "test"
+        ]
     },
     "suggest": {
         "lexpress/doctrine1": "Doctrine plugin",
@@ -22,5 +29,7 @@
             "dev-master": "1.5-dev"
         }
     },
-    "bin": ["data/bin/symfony"]
+    "bin": [
+        "data/bin/symfony"
+    ]
 }
