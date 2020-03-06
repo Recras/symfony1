@@ -96,7 +96,7 @@ $b->
   end()
 ;
 
-// security.yml: is_secure
+// security: is_secure
 $b->
   get('/configSecurityIsSecure')->
   with('request')->begin()->
@@ -112,7 +112,7 @@ $b->
   end()
 ;
 
-// security.yml: case sensitivity
+// security: case sensitivity
 $b->
   get('/configSecurityIsSecureAction/index')->
   with('request')->begin()->

@@ -10,6 +10,8 @@
  */
 class configSecurityIsSecureActionActions extends sfActions
 {
+  protected $security = [ 'index' => ['is_secure' => true, 'credentials' => ['user']]];
+
   public function executeIndex()
   {
   }
