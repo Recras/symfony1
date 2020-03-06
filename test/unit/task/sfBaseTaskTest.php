@@ -3,7 +3,7 @@
 /*
  * This file is part of the symfony package.
  * (c) Fabien Potencier <fabien.potencier@symfony-project.com>
- * 
+ *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -36,7 +36,7 @@ require_once $rootDir.'/config/ProjectConfiguration.class.php';
 $configuration = new ProjectConfiguration($rootDir, $dispatcher);
 $autoload = sfSimpleAutoload::getInstance();
 
-$t = new lime_test(16);
+$t = new lime_test(13);
 $task = new TestTask($dispatcher, new sfFormatter());
 
 // ->initializeAutoload()
@@ -79,11 +79,6 @@ class ApplicationTask extends sfBaseTask
   public function getRouting()
   {
     return parent::getRouting();
-  }
-
-  public function getMailer()
-  {
-    return parent::getMailer();
   }
 }
 
@@ -129,11 +124,3 @@ $routing = $task->getRouting();
 $t->ok($routing instanceof sfRouting, '->getRouting() returns an sfPatternRouting');
 $t->is($routing, $task->getRouting(), '->getRouting() returns always the same instance');
 $t->ok($routing->hasRouteName('homepage'), '->getRouting() is correctly configured');
-
-// ->getMailer()
-$t->diag('->getMailer()');
-$mailer = $task->getMailer();
-
-$t->ok($mailer instanceof sfMailer, '->getMailer() returns an sfMailer');
-$t->is($mailer, $task->getMailer(), '->getMailer() returns always the same instance');
-$t->is($mailer->getDeliveryStrategy(), sfMailer::REALTIME, '->getMailer() is correctly configured');
