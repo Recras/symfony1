@@ -307,7 +307,7 @@ abstract class sfValidatorBase
   {
     $clean = $value;
 
-    if ($this->options['trim'] && is_string($clean))
+    if (!empty($this->options['trim']) && is_string($clean))
     {
       $clean = trim($clean);
     }
