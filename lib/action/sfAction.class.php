@@ -23,8 +23,7 @@
  */
 abstract class sfAction extends sfComponent
 {
-  protected
-    $security = array();
+  protected $security = [];
 
   /**
    * Executes an application defined process prior to execution of this sfAction object.
@@ -406,7 +405,7 @@ abstract class sfAction extends sfComponent
    */
   public function isSecure()
   {
-    return $this->getSecurityValue('is_secure', false);
+    return $this->getSecurityValue('is_secure', true);
   }
 
   /**

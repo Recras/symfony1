@@ -10,6 +10,7 @@
  */
 class sfI18NPluginActions extends sfActions
 {
+  protected $security = ['all' => ['is_secure' => false]];
   public function executeIndex()
   {
     $i18n = $this->getContext()->getI18N();

@@ -10,6 +10,8 @@
  */
 class articlesActions extends sfActions
 {
+  protected $security = ['all' => ['is_secure' => false]];
+
   public function executeIndex()
   {
     $this->articleList = $this->getArticleTable()->findAll();
@@ -62,21 +64,21 @@ class articlesActions extends sfActions
 
     $this->redirect('articles/index');
   }
-  
+
   private function getArticleTable()
   {
     return Doctrine_Core::getTable('Article');
   }
-  
+
   private function getArticleById($id)
   {
     return $this->getArticleTable()->find($id);
   }
-  
+
   private function getArticleForm($id)
   {
     $article = $this->getArticleById($id);
-    
+
     if ($article instanceof Article)
     {
       return new ArticleForm($article);

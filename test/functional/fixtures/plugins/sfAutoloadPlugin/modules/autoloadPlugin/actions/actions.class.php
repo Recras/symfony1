@@ -2,6 +2,7 @@
 
 class autoloadPluginActions extends sfActions
 {
+  protected $security = ['all' => ['is_secure' => false]];
   public function executeIndex()
   {
     $this->lib1 = myLibClass::ping();

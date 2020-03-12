@@ -10,6 +10,8 @@
  */
 class attachmentActions extends sfActions
 {
+  protected $security = ['all' => ['is_secure' => false]];
+
  /**
   * Executes index action
   *

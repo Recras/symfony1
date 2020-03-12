@@ -10,6 +10,8 @@
  */
 class formatActions extends sfActions
 {
+  protected $security = ['all' => ['is_secure' => false]];
+
   public function executeIndex($request)
   {
     if ('xml' == $request->getRequestFormat())

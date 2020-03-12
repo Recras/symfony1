@@ -10,6 +10,7 @@
  */
 class doctrine_route_testActions extends sfActions
 {
+  protected $security = ['all' => ['is_secure' => false]];
   public function executeIndex(sfWebRequest $request)
   {
     try {

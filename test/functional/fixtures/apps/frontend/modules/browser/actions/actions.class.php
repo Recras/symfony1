@@ -10,6 +10,8 @@
  */
 class browserActions extends sfActions
 {
+  protected $security = ['all' => ['is_secure' => false]];
+
   public function executeIndex()
   {
     return $this->renderText('<html><body><h1>html</h1></body></html>');

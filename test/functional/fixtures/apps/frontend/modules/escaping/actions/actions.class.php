@@ -10,6 +10,8 @@
  */
 class escapingActions extends sfActions
 {
+  protected $security = ['all' => ['is_secure' => false]];
+
   public function preExecute()
   {
     $this->var = 'Lorem <strong>ipsum</strong> dolor sit amet.';
