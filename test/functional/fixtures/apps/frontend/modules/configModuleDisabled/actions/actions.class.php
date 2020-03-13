@@ -10,6 +10,8 @@
  */
 class configModuleDisabledActions extends sfActions
 {
+  protected $security = ['all' => ['is_secure' => false]];
+
   public function executeIndex()
   {
   }

@@ -13,6 +13,8 @@ require_once(dirname(__FILE__).'/../lib/Base<?php echo ucfirst($this->moduleName
  */
 abstract class <?php echo $this->getGeneratedModuleName() ?>Actions extends <?php echo $this->getActionsBaseClass()."\n" ?>
 {
+  protected $security = ['all' => ['is_secure' => false]];
+
   public function preExecute()
   {
     $this->configuration = new <?php echo $this->getModuleName() ?>GeneratorConfiguration();

@@ -10,4 +10,5 @@
  */
 class ##MODULE_NAME##Actions extends auto##MODULE_NAME##Actions
 {
+    protected $security = ['all' => ['is_secure' => false]];
 }

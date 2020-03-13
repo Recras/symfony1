@@ -10,6 +10,8 @@
  */
 class authActions extends sfActions
 {
+  protected $security = ['all' => ['is_secure' => false]];
+
   public function executeBasic()
   {
     $response = $this->getResponse();

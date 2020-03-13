@@ -10,6 +10,8 @@
  */
 class cookieActions extends sfActions
 {
+  protected $security = ['all' => ['is_secure' => false]];
+
   public function executeIndex($request)
   {
     return $this->renderText('<p>'.$request->getCookie('foo').'.'.$request->getCookie('bar').'-'.$request->getCookie('foobar').'</p>');

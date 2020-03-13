@@ -13,4 +13,5 @@ require_once dirname(__FILE__).'/../lib/##MODULE_NAME##GeneratorHelper.class.php
  */
 class ##MODULE_NAME##Actions extends auto##UC_MODULE_NAME##Actions
 {
+    protected $security = ['all' => ['is_secure' => false]];
 }

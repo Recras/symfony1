@@ -2,6 +2,8 @@
 
 class httpcacheActions extends sfActions
 {
+  protected $security = ['all' => ['is_secure' => false]];
+
   public function executePage1(sfWebRequest $request)
   {
     $this->setTemplate('index');

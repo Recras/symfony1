@@ -11,6 +11,7 @@
 class <?php echo $this->getGeneratedModuleName() ?>Actions extends <?php echo $this->getActionsBaseClass() ?>
 
 {
+    protected $security = ['all' => ['is_secure' => false]];
 <?php include dirname(__FILE__).'/../../parts/indexAction.php' ?>
 
 <?php if (isset($this->params['with_show']) && $this->params['with_show']): ?>

@@ -10,6 +10,7 @@
  */
 class i18nActions extends sfActions
 {
+  protected $security = ['all' => ['is_secure' => false]];
   public function executeIndex()
   {
     $i18n = $this->getContext()->getI18N();
@@ -29,7 +30,7 @@ class i18nActions extends sfActions
 
     $this->forward('i18n', 'index');
   }
-  
+
   public function executeI18nForm(sfWebRequest $request)
   {
     $this->form = new I18nForm();
@@ -38,7 +39,7 @@ class i18nActions extends sfActions
       $this->form->bind($request->getParameter('i18n'));
     }
   }
-  
+
   public function executeI18nCustomCatalogueForm(sfWebRequest $request)
   {
     $this->form = new I18nCustomCatalogueForm();

@@ -10,6 +10,8 @@
  */
 class ##MODULE_NAME##Actions extends sfActions
 {
+  protected $security = ['all' => ['is_secure' => false]];
+
   /**
    * Executes index action
    *

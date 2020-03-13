@@ -13,4 +13,5 @@ require_once dirname(__FILE__).'/../lib/my_articlesGeneratorHelper.class.php';
  */
 class my_articlesActions extends autoMy_articlesActions
 {
+    protected $security = ['all' => ['is_secure' => false]];
 }

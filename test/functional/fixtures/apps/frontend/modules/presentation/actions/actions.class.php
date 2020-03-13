@@ -10,6 +10,8 @@
  */
 class presentationActions extends sfActions
 {
+  protected $security = ['all' => ['is_secure' => false]];
+
   public function executeIndex()
   {
     $this->foo = $this->getController()->getPresentationFor('presentation', 'foo');
