@@ -167,7 +167,7 @@ class sfValidatorDate extends sfValidatorBase
    *
    * @param  array $value  An array of date elements
    *
-   * @return int A timestamp
+   * @return string A timestamp
    */
   protected function convertDateArrayToString($value)
   {

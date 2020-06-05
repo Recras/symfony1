@@ -120,7 +120,7 @@ abstract class sfValidatorBase
    * @param string $name   The error code
    * @param string $value  The error message
    *
-   * @return sfValidatorBase The current validator instance
+   * @return $this The current validator instance
    */
   public function addMessage($name, $value)
   {
@@ -135,7 +135,7 @@ abstract class sfValidatorBase
    * @param string $name   The error code
    * @param string $value  The error message
    *
-   * @return sfValidatorBase The current validator instance
+   * @return $this The current validator instance
    */
   public function setMessage($name, $value)
   {
@@ -164,7 +164,7 @@ abstract class sfValidatorBase
    *
    * @param array $values  An array of error messages
    *
-   * @return sfValidatorBase The current validator instance
+   * @return $this The current validator instance
    */
   public function setMessages($values)
   {
@@ -191,7 +191,7 @@ abstract class sfValidatorBase
    * @param string $name   The option name
    * @param mixed  $value  The default value
    *
-   * @return sfValidatorBase The current validator instance
+   * @return $this The current validator instance
    */
   public function addOption($name, $value = null)
   {
@@ -206,7 +206,7 @@ abstract class sfValidatorBase
    * @param string $name   The option name
    * @param mixed  $value  The value
    *
-   * @return sfValidatorBase The current validator instance
+   * @return $this The current validator instance
    */
   public function setOption($name, $value)
   {
@@ -247,7 +247,7 @@ abstract class sfValidatorBase
    *
    * @param array $values  An array of options
    *
-   * @return sfValidatorBase The current validator instance
+   * @return $this The current validator instance
    */
   public function setOptions($values)
   {
@@ -261,7 +261,7 @@ abstract class sfValidatorBase
    *
    * @param string $name  The option name
    *
-   * @return sfValidatorBase The current validator instance
+   * @return $this The current validator instance
    */
   public function addRequiredOption($name)
   {
@@ -478,7 +478,7 @@ abstract class sfValidatorBase
   /**
    * Returns all options with non default values.
    *
-   * @return string  A string representation of the options
+   * @return array<string,mixed>  A string representation of the options
    */
   protected function getOptionsWithoutDefaults()
   {
