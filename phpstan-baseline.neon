@@ -1,0 +1,7 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Variable \\$cleanTime might not be defined\\.$#"
+			count: 2
+			path: lib/validator/sfValidatorDate.class.php
+
