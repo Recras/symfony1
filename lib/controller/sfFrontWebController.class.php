@@ -48,6 +48,10 @@ class sfFrontWebController extends sfWebController
       // make the first request
       $this->forward($moduleName, $actionName);
     }
+    catch (\sfSecurityException $e)
+    {
+      $this->forward(sfConfig::get('sf_secure_module'), sfConfig::get('sf_secure_action'));
+    }
     catch (sfException $e)
     {
       $e->printStackTrace();
