@@ -48,6 +48,16 @@ class sfFrontWebController extends sfWebController
       // make the first request
       $this->forward($moduleName, $actionName);
     }
+    catch (\sfSecurityException $e)
+    {
+      if (($response = sfContext::getInstance()->getResponse()) instanceof \sfWebResponse) {
+        $response->setStatusCode(403);
+      }
+      if (sfConfig::get('sf_web_debug')) {
+        $e->printStackTrace();
+      }
+      $this->forward(sfConfig::get('sf_secure_module'), sfConfig::get('sf_secure_action'));
+    }
     catch (sfException $e)
     {
       $e->printStackTrace();
