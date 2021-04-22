@@ -353,7 +353,7 @@ class sfException extends Exception
    */
   static protected function formatArrayAsHtml($values)
   {
-    return '<pre>'.self::escape(@sfYaml::dump($values)).'</pre>';
+    return '<pre>'.self::escape(@\Symfony\Component\Yaml\Yaml::dump($values)).'</pre>';
   }
 
   /**

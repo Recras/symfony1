@@ -84,6 +84,6 @@ EOF;
       'param' => array_merge(isset($config[$options['env']][$options['name']]['param']) ? $config[$options['env']][$options['name']]['param'] : array(), array('dsn' => $arguments['dsn'], 'username' => $arguments['username'], 'password' => $arguments['password'])),
     );
 
-    file_put_contents($file, sfYaml::dump($config, 4));
+    file_put_contents($file, \Symfony\Component\Yaml\Yaml::dump($config, 4));
   }
 }

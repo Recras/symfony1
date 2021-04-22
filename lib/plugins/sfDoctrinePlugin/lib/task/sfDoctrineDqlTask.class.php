@@ -89,7 +89,7 @@ EOF;
 
         $this->log(array(
           sprintf('found %s results', number_format($count)),
-          sfYaml::dump($results, 4),
+          \Symfony\Component\Yaml\Yaml::dump($results, 4),
         ));
       }
       else
