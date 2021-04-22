@@ -112,7 +112,7 @@ EOF;
 
     $routing = sfConfig::get('sf_app_config_dir').'/routing.yml';
     $content = file_get_contents($routing);
-    $routesArray = sfYaml::load($content);
+    $routesArray = \Symfony\Component\Yaml\Yaml::parse($content);
 
     if (!isset($routesArray[$name]))
     {

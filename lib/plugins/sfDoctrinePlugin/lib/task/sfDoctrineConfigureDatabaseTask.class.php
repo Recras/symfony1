@@ -77,7 +77,7 @@ EOF;
       $file = sfConfig::get('sf_config_dir').'/databases.yml';
     }
 
-    $config = file_exists($file) ? sfYaml::load($file) : array();
+    $config = file_exists($file) ? \Symfony\Component\Yaml\Yaml::parse($file) : array();
 
     $config[$options['env']][$options['name']] = array(
       'class' => $options['class'],

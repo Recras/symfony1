@@ -71,7 +71,7 @@ abstract class sfDoctrineBaseTask extends sfBaseTask
    * @param array|null        $names An array of names or NULL for all databases
    *
    * @return array An associative array of {@link sfDoctrineDatabase} objects and their names
-   * 
+   *
    * @throws InvalidArgumentException If a requested database is not a Doctrine database
    */
   protected function getDoctrineDatabases(sfDatabaseManager $databaseManager, array $names = null)
@@ -139,7 +139,7 @@ abstract class sfDoctrineBaseTask extends sfBaseTask
       $plugin = $this->configuration->getPluginConfiguration($name);
       foreach ($finder->in($plugin->getRootDir().'/config/doctrine') as $schema)
       {
-        $pluginModels = (array) sfYaml::load($schema);
+        $pluginModels = (array) \Symfony\Component\Yaml\Yaml::parse($schema);
         $globals = $this->filterSchemaGlobals($pluginModels);
 
         foreach ($pluginModels as $model => $definition)
@@ -170,7 +170,7 @@ abstract class sfDoctrineBaseTask extends sfBaseTask
     // project models
     foreach ($finder->in($yamlSchemaPath) as $schema)
     {
-      $projectModels = (array) sfYaml::load($schema);
+      $projectModels = (array) \Symfony\Component\Yaml\Yaml::parse($schema);
       $globals = $this->filterSchemaGlobals($projectModels);
 
       foreach ($projectModels as $model => $definition)
@@ -200,7 +200,7 @@ abstract class sfDoctrineBaseTask extends sfBaseTask
    * @param array $models An array of model definitions
    *
    * @return array An array of globals
-   * 
+   *
    * @see Doctrine_Import_Schema::getGlobalDefinitionKeys()
    */
   protected function filterSchemaGlobals(& $models)
@@ -222,10 +222,10 @@ abstract class sfDoctrineBaseTask extends sfBaseTask
 
   /**
    * Canonicalizes a model definition in preparation for merging.
-   * 
+   *
    * @param string $model      The model name
    * @param array  $definition The model definition
-   * 
+   *
    * @return array The canonicalized model definition
    */
   protected function canonicalizeModelDefinition($model, $definition)
