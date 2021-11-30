@@ -874,7 +874,7 @@ class sfWebResponse extends sfResponse
   /**
    * @see sfResponse
    */
-  public function serialize()
+  public function __serialize()
   {
     return serialize(array($this->content, $this->statusCode, $this->statusText, $this->options, $this->headerOnly, $this->headers, $this->metas, $this->httpMetas, $this->stylesheets, $this->javascripts, $this->slots));
   }

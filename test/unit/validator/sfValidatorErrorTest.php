@@ -48,15 +48,14 @@ $t->is($e->getCode(), 'max_length', '->getCode() returns the error code');
 $t->diag('__toString()');
 $t->is($e->__toString(), $e->getMessage(), '->__toString() returns the error message string');
 
-// implements Serializable
 $t->diag('implements Serializable');
 
 // we test with non serializable objects
 // to ensure that the errors are always serializable
 // even if you use PDO as a session handler
-class NotSerializable implements Serializable
+class NotSerializable
 {
-  public function serialize()
+  public function __serialize()
   {
     throw new Exception('Not serializable');
   }

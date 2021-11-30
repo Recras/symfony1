@@ -19,7 +19,7 @@
  * @property $firstOptional int
  * @property $segments array
  */
-class sfRoute implements Serializable
+class sfRoute
 {
   protected
     $isBound           = false,
@@ -845,7 +845,7 @@ class sfRoute implements Serializable
     }
   }
 
-  public function serialize()
+  public function __serialize()
   {
     // always serialize compiled routes
     $this->compile();
