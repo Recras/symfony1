@@ -239,7 +239,7 @@ class sfDateFormat
       }
       else
       {
-        $function = ucfirst($this->getFunctionName($pattern));
+        $function = ucfirst($this->getFunctionName($pattern) ?? '');
         if ($function != null)
         {
           $fName = 'get'.$function;
@@ -270,6 +270,7 @@ class sfDateFormat
     {
       return $this->tokens[$token[0]];
     }
+    return null;
   }
 
   /**

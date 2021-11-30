@@ -1064,7 +1064,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
    *
    * @return Boolean true if the widget exists, false otherwise
    */
-  public function offsetExists($name)
+  public function offsetExists($name): bool
   {
     return isset($this->widgetSchema[$name]);
   }
