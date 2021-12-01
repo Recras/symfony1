@@ -1076,7 +1076,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
    *
    * @return sfFormField|sfFormFieldSchema A form field instance
    */
-  public function offsetGet($name)
+  public function offsetGet($name): mixed
   {
     if (!isset($this->formFields[$name]))
     {
@@ -1114,7 +1114,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
    *
    * @throws <b>LogicException</b>
    */
-  public function offsetSet($offset, $value)
+  public function offsetSet($offset, $value): void
   {
     throw new LogicException('Cannot update form fields.');
   }
@@ -1126,7 +1126,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
    *
    * @param string $offset The field name
    */
-  public function offsetUnset($offset)
+  public function offsetUnset($offset): void
   {
     unset(
       $this->widgetSchema[$offset],
@@ -1250,7 +1250,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
    *
    * @return mixed The escaped value
    */
-  public function current()
+  public function current(): mixed
   {
     return $this[current($this->fieldNames)];
   }
@@ -1258,7 +1258,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
   /**
    * Moves to the next form field (implements the Iterator interface).
    */
-  public function next()
+  public function next(): mixed
   {
     next($this->fieldNames);
     --$this->count;
