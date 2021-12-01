@@ -1258,7 +1258,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
   /**
    * Moves to the next form field (implements the Iterator interface).
    */
-  public function next(): mixed
+  public function next(): void
   {
     next($this->fieldNames);
     --$this->count;

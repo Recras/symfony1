@@ -117,7 +117,7 @@ class sfEvent implements ArrayAccess
    *
    * @return Boolean true if the parameter exists, false otherwise
    */
-  public function offsetExists($name)
+  public function offsetExists($name): bool
   {
     return array_key_exists($name, $this->parameters);
   }

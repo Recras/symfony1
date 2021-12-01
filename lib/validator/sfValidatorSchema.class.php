@@ -309,7 +309,7 @@ class sfValidatorSchema extends sfValidatorBase implements ArrayAccess
    *
    * @return bool true if the schema has a field with the given name, false otherwise
    */
-  public function offsetExists($name)
+  public function offsetExists($name): bool
   {
     return isset($this->fields[$name]);
   }
