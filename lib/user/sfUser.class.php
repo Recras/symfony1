@@ -239,7 +239,7 @@ class sfUser implements ArrayAccess
    *
    * @return mixed The user attribute if exists, null otherwise
    */
-  public function offsetGet($name)
+  public function offsetGet($name): mixed
   {
     return $this->getAttribute($name, false);
   }

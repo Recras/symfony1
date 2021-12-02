@@ -173,7 +173,7 @@ abstract class sfRequest implements ArrayAccess
    *
    * @return Boolean true if the request parameter exists, false otherwise
    */
-  public function offsetExists($name)
+  public function offsetExists($name): bool
   {
     return $this->hasParameter($name);
   }
