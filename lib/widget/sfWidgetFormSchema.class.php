@@ -684,7 +684,7 @@ class sfWidgetFormSchema extends sfWidgetForm implements ArrayAccess
    *
    * @throws InvalidArgumentException when the field is not instance of sfWidget
    */
-  public function offsetSet($name, $widget)
+  public function offsetSet($name, $widget): void
   {
     if (!$widget instanceof sfWidget)
     {

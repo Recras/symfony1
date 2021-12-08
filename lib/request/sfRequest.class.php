@@ -196,7 +196,7 @@ abstract class sfRequest implements ArrayAccess
    * @param string $offset The parameter name
    * @param string $value The parameter value
    */
-  public function offsetSet($offset, $value)
+  public function offsetSet($offset, $value): void
   {
     $this->setParameter($offset, $value);
   }

@@ -144,7 +144,7 @@ class sfFormFieldSchema extends sfFormField implements ArrayAccess, Iterator, Co
    *
    * @throws LogicException
    */
-  public function offsetSet($offset, $value)
+  public function offsetSet($offset, $value): void
   {
     throw new LogicException('Cannot update form fields (read-only).');
   }

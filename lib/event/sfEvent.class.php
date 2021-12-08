@@ -145,7 +145,7 @@ class sfEvent implements ArrayAccess
    * @param string  $name   The parameter name
    * @param mixed   $value  The parameter value
    */
-  public function offsetSet($name, $value)
+  public function offsetSet($name, $value): void
   {
     $this->parameters[$name] = $value;
   }

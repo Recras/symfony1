@@ -364,7 +364,7 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
    * @see sfWidgetFormSchema
    * @inheritdoc
    */
-  public function offsetSet($name, $widget)
+  public function offsetSet($name, $widget): void
   {
     $this->widget[$name] = $widget;
   }
