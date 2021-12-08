@@ -196,7 +196,7 @@ class sfValidatorErrorSchema extends sfValidatorError implements ArrayAccess, It
    *
    * @return string The key
    */
-  public function key()
+  public function key(): string
   {
     return key($this->errors);
   }

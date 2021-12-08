@@ -129,7 +129,7 @@ class sfEvent implements ArrayAccess
    *
    * @return mixed  The parameter value
    */
-  public function offsetGet($name)
+  public function offsetGet($name): mixed
   {
     if (!array_key_exists($name, $this->parameters))
     {
