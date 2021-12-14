@@ -45,12 +45,7 @@ class sfDoctrinePager extends sfPager
     $this->tableMethodName = $tableMethodName;
   }
 
-  /**
-   * Serialize the pager object
-   *
-   * @return string $serialized
-   */
-  public function __serialize()
+  public function __serialize(): string
   {
     $vars = get_object_vars($this);
     unset($vars['query']);

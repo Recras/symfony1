@@ -151,10 +151,8 @@ abstract class sfResponse
 
   /**
    * Serializes the current instance.
-   *
-   * @return array Objects instance
    */
-  public function __serialize()
+  public function __serialize(): string
   {
     return serialize($this->content);
   }

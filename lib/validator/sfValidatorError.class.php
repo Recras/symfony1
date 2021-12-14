@@ -138,7 +138,7 @@ class sfValidatorError extends Exception
    *
    * @return string The instance as a serialized string
    */
-  public function __serialize()
+  public function __serialize(): string
   {
     return serialize(array($this->validator, $this->arguments, $this->code, $this->message));
   }

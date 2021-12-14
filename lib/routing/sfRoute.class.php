@@ -845,7 +845,7 @@ class sfRoute
     }
   }
 
-  public function __serialize()
+  public function __serialize(): string
   {
     // always serialize compiled routes
     $this->compile();
