@@ -874,18 +874,28 @@ class sfWebResponse extends sfResponse
   /**
    * @see sfResponse
    */
-  public function __serialize(): string
+  public function __serialize(): array
   {
-    return serialize(array($this->content, $this->statusCode, $this->statusText, $this->options, $this->headerOnly, $this->headers, $this->metas, $this->httpMetas, $this->stylesheets, $this->javascripts, $this->slots));
+    return [
+      'content' => $this->content,
+      'statusCode' => $this->statusCode,
+      'statusText' => $this->statusText,
+      'options' => $this->options,
+      'headerOnly' => $this->headerOnly,
+      'headers' => $this->headers,
+      'metas' => $this->metas,
+      'httpMetas' => $this->httpMetas,
+      'stylesheets' => $this->stylesheets,
+      'javascripts' => $this->javascripts,
+      'slots' => $this->slots,
+    ];
   }
 
-  /**
-   * @see sfResponse
-   * @inheritdoc
-   */
-  public function unserialize($serialized)
+  public function __unserialize(array $serialized)
   {
-    list($this->content, $this->statusCode, $this->statusText, $this->options, $this->headerOnly, $this->headers, $this->metas, $this->httpMetas, $this->stylesheets, $this->javascripts, $this->slots) = unserialize($serialized);
+    foreach ($serialized as $name => $values) {
+      $this->$name = $values;
+    }
   }
 
   /**

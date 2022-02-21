@@ -12,8 +12,8 @@ require_once(__DIR__.'/../../bootstrap/unit.php');
 
 class myResponse extends sfResponse
 {
-  function __serialize(): string {}
-  function unserialize($serialized) {}
+  function __serialize(): array {}
+  function __unserialize(array $serialized) {}
 }
 
 class fakeResponse

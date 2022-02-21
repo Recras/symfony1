@@ -181,18 +181,18 @@ class sfParameterHolder
   /**
    * Serializes the current instance.
    */
-  public function __serialize(): string
+  public function __serialize(): array
   {
-    return serialize($this->parameters);
+    return [
+      'parameters' => $this->parameters,
+    ];
   }
 
   /**
    * Unserializes a sfParameterHolder instance.
-   *
-   * @param string $serialized  A serialized sfParameterHolder instance
    */
-  public function unserialize($serialized)
+  public function __unserialize(array $serialized)
   {
-    $this->parameters = unserialize($serialized);
+    $this->parameters = $serialized['parameters'];
   }
 }

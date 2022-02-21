@@ -152,9 +152,11 @@ abstract class sfResponse
   /**
    * Serializes the current instance.
    */
-  public function __serialize(): string
+  public function __serialize(): array
   {
-    return serialize($this->content);
+    return [
+      'content' => $this->content,
+    ];
   }
 
   /**
@@ -162,11 +164,9 @@ abstract class sfResponse
    *
    * You need to inject a dispatcher after unserializing a sfResponse instance.
    *
-   * @param string $serialized  A serialized sfResponse instance
-   *
    */
-  public function unserialize($serialized)
+  public function __unserialize(array $serialized)
   {
-    $this->content = unserialize($serialized);
+    $this->content = $serialized['content'];
   }
 }

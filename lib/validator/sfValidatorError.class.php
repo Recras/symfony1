@@ -136,21 +136,22 @@ class sfValidatorError extends Exception
    * the trace can contain a PDO instance which is not serializable, serializing won't
    * work when using PDO.
    *
-   * @return string The instance as a serialized string
+   * @return array The instance as a serialized string
    */
-  public function __serialize(): string
+  public function __serialize(): array
   {
-    return serialize(array($this->validator, $this->arguments, $this->code, $this->message));
+    return [
+      'validator' => $this->validator,
+      'arguments' => $this->arguments,
+      'code' => $this->code,
+      'message' => $this->message,
+    ];
   }
 
-  /**
-   * Unserializes a sfValidatorError instance.
-   *
-   * @param string $serialized  A serialized sfValidatorError instance
-   *
-   */
-  public function unserialize($serialized)
+  public function __unserialize(array $serialized)
   {
-    list($this->validator, $this->arguments, $this->code, $this->message) = unserialize($serialized);
+    foreach ($serialized as $name => $values) {
+      $this->$name = $values;
+    }
   }
 }
