@@ -354,12 +354,12 @@ class sfDoctrineColumn implements ArrayAccess
     return isset($this->definition[$offset]);
   }
 
-  public function offsetSet($offset, $value)
+  public function offsetSet(mixed $offset, mixed $value): void
   {
     $this->definition[$offset] = $value;
   }
 
-  public function offsetGet($offset)
+  public function offsetGet(mixed $offset): mixed
   {
     return $this->definition[$offset];
   }
