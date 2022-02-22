@@ -56,9 +56,9 @@ class sfOutputEscaperIteratorDecorator extends sfOutputEscaperObjectDecorator im
    *
    * @return void
    */
-  public function rewind()
+  public function rewind(): void
   {
-    return $this->iterator->rewind();
+    $this->iterator->rewind();
   }
 
   /**
@@ -66,7 +66,7 @@ class sfOutputEscaperIteratorDecorator extends sfOutputEscaperObjectDecorator im
    *
    * @return mixed The escaped value
    */
-  public function current()
+  public function current(): mixed
   {
     return sfOutputEscaper::escape($this->escapingMethod, $this->iterator->current());
   }
@@ -76,7 +76,7 @@ class sfOutputEscaperIteratorDecorator extends sfOutputEscaperObjectDecorator im
    *
    * @return string Iterator key
    */
-  public function key()
+  public function key(): string
   {
     return $this->iterator->key();
   }
@@ -86,9 +86,9 @@ class sfOutputEscaperIteratorDecorator extends sfOutputEscaperObjectDecorator im
    *
    * @return void
    */
-  public function next()
+  public function next(): void
   {
-    return $this->iterator->next();
+    $this->iterator->next();
   }
 
   /**

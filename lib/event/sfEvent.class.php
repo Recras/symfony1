@@ -155,7 +155,7 @@ class sfEvent implements ArrayAccess
    *
    * @param string $name    The parameter name
    */
-  public function offsetUnset($name): void
+  public function offsetUnset(string $name): void
   {
     unset($this->parameters[$name]);
   }

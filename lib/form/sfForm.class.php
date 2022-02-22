@@ -1126,7 +1126,7 @@ class sfForm implements ArrayAccess, Iterator, Countable
    *
    * @param string $offset The field name
    */
-  public function offsetUnset($offset): void
+  public function offsetUnset(string $offset): void
   {
     unset(
       $this->widgetSchema[$offset],

@@ -90,20 +90,16 @@ class sfOutputEscaperObjectDecorator extends sfOutputEscaperGetterDecorator impl
 
   /**
    * Try to call decorated object __toString() method if exists.
-   *
-   * @return string
    */
-  public function __toString()
+  public function __toString(): string
   {
     return $this->escape($this->escapingMethod, (string) $this->value);
   }
 
   /**
    * Asks the wrapped object whether a property is set.
-   *
-   * @return boolean
    */
-  public function __isset($key)
+  public function __isset($key): bool
   {
     return isset($this->value->$key);
   }
@@ -115,7 +111,7 @@ class sfOutputEscaperObjectDecorator extends sfOutputEscaperGetterDecorator impl
    *
    * @return int The size of the object
    */
-  public function count()
+  public function count(): int
   {
     return count($this->value);
   }
