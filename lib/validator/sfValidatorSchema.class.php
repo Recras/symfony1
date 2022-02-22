@@ -347,7 +347,7 @@ class sfValidatorSchema extends sfValidatorBase implements ArrayAccess
    *
    * @param string $name
    */
-  public function offsetUnset($name): void
+  public function offsetUnset(mixed $name): void
   {
     unset($this->fields[$name]);
   }

@@ -154,7 +154,7 @@ class sfOutputEscaperIteratorDecorator extends sfOutputEscaperObjectDecorator im
    *
    * @throws sfException
    */
-  public function offsetUnset($offset)
+  public function offsetUnset(mixed $offset): void
   {
     throw new sfException('Cannot unset values.');
   }

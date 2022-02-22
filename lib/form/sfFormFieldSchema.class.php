@@ -156,7 +156,7 @@ class sfFormFieldSchema extends sfFormField implements ArrayAccess, Iterator, Co
    *
    * @throws LogicException
    */
-  public function offsetUnset($offset)
+  public function offsetUnset(mixed $offset): void
   {
     throw new LogicException('Cannot remove form fields (read-only).');
   }

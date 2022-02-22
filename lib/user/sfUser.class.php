@@ -260,7 +260,7 @@ class sfUser implements ArrayAccess
    *
    * @param string $offset The parameter name
    */
-  public function offsetUnset($offset): void
+  public function offsetUnset(mixed $offset): void
   {
     $this->getAttributeHolder()->remove($offset);
   }

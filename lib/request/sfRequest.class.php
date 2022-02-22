@@ -206,7 +206,7 @@ abstract class sfRequest implements ArrayAccess
    *
    * @param string $offset The parameter name
    */
-  public function offsetUnset($offset): void
+  public function offsetUnset(mixed $offset): void
   {
     $this->getParameterHolder()->remove($offset);
   }

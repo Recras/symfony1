@@ -373,7 +373,7 @@ class sfWidgetFormSchemaDecorator extends sfWidgetFormSchema
    * @see sfWidgetFormSchema
    * @inheritdoc
    */
-  public function offsetUnset($name)
+  public function offsetUnset(mixed $name): void
   {
     unset($this->widget[$name]);
   }

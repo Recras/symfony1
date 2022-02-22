@@ -515,7 +515,7 @@ class sfContext implements ArrayAccess
    *
    * @param string $offset The parameter name
    */
-  public function offsetUnset($offset): void
+  public function offsetUnset(mixed $offset): void
   {
     unset($this->factories[$offset]);
   }
