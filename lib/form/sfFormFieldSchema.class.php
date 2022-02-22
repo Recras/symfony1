@@ -103,7 +103,7 @@ class sfFormFieldSchema extends sfFormField implements ArrayAccess, Iterator, Co
    *
    * @return sfFormField A form field instance
    */
-  public function offsetGet($name)
+  public function offsetGet(mixed $name): sfFormField
   {
     if (!isset($this->fields[$name]))
     {
