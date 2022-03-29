@@ -17,7 +17,7 @@
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  * @version    SVN: $Id$
  */
-class sfDoctrinePager extends sfPager implements Serializable
+class sfDoctrinePager extends sfPager
 {
   protected
     $query             = null,
@@ -45,33 +45,24 @@ class sfDoctrinePager extends sfPager implements Serializable
     $this->tableMethodName = $tableMethodName;
   }
 
-  /**
-   * Serialize the pager object
-   *
-   * @return string $serialized
-   */
-  public function serialize()
+  public function __serialize(): array
   {
     $vars = get_object_vars($this);
     unset($vars['query']);
-    return serialize($vars);
+    return $vars;
   }
 
   /**
    * Unserialize a pager object
-   *
-   * @param string $serialized
    */
-  public function unserialize($serialized)
+  public function __unserialize(array $serialized)
   {
-    $array = unserialize($serialized);
-
-    foreach ($array as $name => $values)
+    foreach ($serialized as $name => $values)
     {
       $this->$name = $values;
     }
 
-    $this->tableMethodCalled = false; 
+    $this->tableMethodCalled = false;
   }
 
   /**

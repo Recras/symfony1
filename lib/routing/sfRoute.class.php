@@ -19,7 +19,7 @@
  * @property $firstOptional int
  * @property $segments array
  */
-class sfRoute implements Serializable
+class sfRoute
 {
   protected
     $isBound           = false,
@@ -845,17 +845,31 @@ class sfRoute implements Serializable
     }
   }
 
-  public function serialize()
+  public function __serialize(): array
   {
     // always serialize compiled routes
     $this->compile();
     // sfPatternRouting will always re-set defaultParameters, so no need to serialize them
-    return serialize(array($this->tokens, $this->defaultOptions, $this->options, $this->pattern, $this->staticPrefix, $this->regex, $this->variables, $this->defaults, $this->requirements, $this->suffix, $this->customToken));
+    return [
+      'tokens' => $this->tokens,
+      'defaultOptions' => $this->defaultOptions,
+      'options' => $this->options,
+      'pattern' => $this->pattern,
+      'staticPrefix' => $this->staticPrefix,
+      'regex' => $this->regex,
+      'variables' => $this->variables,
+      'defaults' => $this->defaults,
+      'requirements' => $this->requirements,
+      'suffix' => $this->suffix,
+      'customToken' => $this->customToken,
+    ];
   }
 
-  public function unserialize($data)
+  public function __unserialize(array $serialized)
   {
-    list($this->tokens, $this->defaultOptions, $this->options, $this->pattern, $this->staticPrefix, $this->regex, $this->variables, $this->defaults, $this->requirements, $this->suffix, $this->customToken) = unserialize($data);
+    foreach ($serialized as $name => $values) {
+      $this->$name = $values;
+    }
     $this->compiled = true;
   }
 }

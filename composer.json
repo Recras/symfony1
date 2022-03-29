@@ -3,6 +3,7 @@
     "description": "Fork of symfony 1.4, based on lexpress/symfony1",
     "license": "MIT",
     "require": {
+        "php": ">=8.0"
     },
     "require-dev": {
         "phpstan/phpstan": "^0.12.25",

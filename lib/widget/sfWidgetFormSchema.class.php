@@ -684,7 +684,7 @@ class sfWidgetFormSchema extends sfWidgetForm implements ArrayAccess
    *
    * @throws InvalidArgumentException when the field is not instance of sfWidget
    */
-  public function offsetSet($name, $widget)
+  public function offsetSet($name, $widget): void
   {
     if (!$widget instanceof sfWidget)
     {
@@ -710,7 +710,7 @@ class sfWidgetFormSchema extends sfWidgetForm implements ArrayAccess
    *
    * @param string $name field name
    */
-  public function offsetUnset($name)
+  public function offsetUnset(mixed $name): void
   {
     unset($this->fields[$name]);
     if (false !== $position = array_search((string) $name, $this->positions))

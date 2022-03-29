@@ -17,7 +17,7 @@
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @version    SVN: $Id$
  */
-abstract class sfResponse implements Serializable
+abstract class sfResponse
 {
   /** @var array */
   protected $options = array();
@@ -151,12 +151,12 @@ abstract class sfResponse implements Serializable
 
   /**
    * Serializes the current instance.
-   *
-   * @return array Objects instance
    */
-  public function serialize()
+  public function __serialize(): array
   {
-    return serialize($this->content);
+    return [
+      'content' => $this->content,
+    ];
   }
 
   /**
@@ -164,11 +164,9 @@ abstract class sfResponse implements Serializable
    *
    * You need to inject a dispatcher after unserializing a sfResponse instance.
    *
-   * @param string $serialized  A serialized sfResponse instance
-   *
    */
-  public function unserialize($serialized)
+  public function __unserialize(array $serialized)
   {
-    $this->content = unserialize($serialized);
+    $this->content = $serialized['content'];
   }
 }

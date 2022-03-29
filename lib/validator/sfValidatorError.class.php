@@ -16,7 +16,7 @@
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @version    SVN: $Id$
  */
-class sfValidatorError extends Exception implements Serializable
+class sfValidatorError extends Exception
 {
   protected
     $validator = null,
@@ -109,7 +109,7 @@ class sfValidatorError extends Exception implements Serializable
    * error messages:
    *
    * $i18n->__($error->getMessageFormat(), $error->getArguments());
-   * 
+   *
    * If no message format has been set in the validator, the exception standard
    * message is returned.
    *
@@ -136,21 +136,22 @@ class sfValidatorError extends Exception implements Serializable
    * the trace can contain a PDO instance which is not serializable, serializing won't
    * work when using PDO.
    *
-   * @return string The instance as a serialized string
+   * @return array The instance as a serialized string
    */
-  public function serialize()
+  public function __serialize(): array
   {
-    return serialize(array($this->validator, $this->arguments, $this->code, $this->message));
+    return [
+      'validator' => $this->validator,
+      'arguments' => $this->arguments,
+      'code' => $this->code,
+      'message' => $this->message,
+    ];
   }
 
-  /**
-   * Unserializes a sfValidatorError instance.
-   *
-   * @param string $serialized  A serialized sfValidatorError instance
-   *
-   */
-  public function unserialize($serialized)
+  public function __unserialize(array $serialized)
   {
-    list($this->validator, $this->arguments, $this->code, $this->message) = unserialize($serialized);
+    foreach ($serialized as $name => $values) {
+      $this->$name = $values;
+    }
   }
 }
