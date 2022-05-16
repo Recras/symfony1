@@ -23,7 +23,7 @@
  */
 abstract class sfAction extends sfComponent
 {
-  protected $security = [];
+  protected array $security = [];
 
   /**
    * Executes an application defined process prior to execution of this sfAction object.
