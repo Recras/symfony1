@@ -19,13 +19,14 @@
 class defaultActions extends sfActions
 {
   /**
-   * @var array<string,array<string,bool|string|array<int, array<int, string>>>>
+   * @var array<string,array<string,bool|string|array<int, array<int, string>|string>>>
    *      array<string,array<string,bool>
    *          = 'is_secure' => false
    *      array<string,array<string,string>
    *          = 'credentials' => 'editObject'
    *      array<string,array<string,array>
    *          = 0 => 'viewObject'
+   *          = 1 => [ 0 => 'viewObject' ]
    */
 
   protected array $security = ['all' => ['is_secure' => false]];
