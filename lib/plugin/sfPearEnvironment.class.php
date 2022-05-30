@@ -64,7 +64,7 @@ class sfPearEnvironment
    * @param sfEventDispatcher $dispatcher   An event dispatcher instance
    * @param array             $options      An array of options
    */
-  public function initialize(sfEventDispatcher $dispatcher, $options = array())
+  public function initialize(sfEventDispatcher $dispatcher, $options = array()): void
   {
     $this->dispatcher = $dispatcher;
 

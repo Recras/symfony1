@@ -49,7 +49,7 @@ abstract class sfTask
    * @param sfEventDispatcher $dispatcher  A sfEventDispatcher instance
    * @param sfFormatter       $formatter   A sfFormatter instance
    */
-  public function initialize(sfEventDispatcher $dispatcher, sfFormatter $formatter)
+  public function initialize(sfEventDispatcher $dispatcher, sfFormatter $formatter): void
   {
     $this->dispatcher = $dispatcher;
     $this->formatter  = $formatter;

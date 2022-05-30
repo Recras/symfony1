@@ -53,7 +53,7 @@ class sfDatabaseManager
    *
    * @throws <b>sfInitializationException</b> If an error occurs while initializing this sfDatabaseManager object
    */
-  public function initialize(sfProjectConfiguration $configuration)
+  public function initialize(sfProjectConfiguration $configuration): void
   {
     $this->configuration = $configuration;
 

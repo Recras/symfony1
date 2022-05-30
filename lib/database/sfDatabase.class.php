@@ -27,7 +27,7 @@ abstract class sfDatabase
   protected $connection = null;
   /** @var resource|PDO (It's interchangeable with $connection. Can be dropped at all.) */
   protected $resource = null;
-  
+
   /**
    * Class constructor.
    *
@@ -49,7 +49,7 @@ abstract class sfDatabase
    *
    * @throws <b>sfInitializationException</b> If an error occurs while initializing this sfDatabase object
    */
-  public function initialize($parameters = array())
+  public function initialize($parameters = array()): void
   {
     $this->parameterHolder = new sfParameterHolder();
     $this->parameterHolder->add($parameters);

@@ -21,7 +21,7 @@ class sfDoctrinePluginConfiguration extends sfPluginConfiguration
   /**
    * @see sfPluginConfiguration
    */
-  public function initialize()
+  public function initialize(): void
   {
     sfConfig::set('sf_orm', 'doctrine');
 

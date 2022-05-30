@@ -73,7 +73,7 @@ abstract class sfRequest implements ArrayAccess
    *
    * @throws <b>sfInitializationException</b> If an error occurs while initializing this sfRequest
    */
-  public function initialize(sfEventDispatcher $dispatcher, $parameters = array(), $attributes = array(), $options = array())
+  public function initialize(sfEventDispatcher $dispatcher, $parameters = array(), $attributes = array(), $options = array()): void
   {
     $this->dispatcher = $dispatcher;
 

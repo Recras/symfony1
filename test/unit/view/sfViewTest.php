@@ -3,7 +3,7 @@
 /*
  * This file is part of the symfony package.
  * (c) 2004-2006 Fabien Potencier <fabien.potencier@symfony-project.com>
- * 
+ *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -25,7 +25,7 @@ class configuredView extends myView
 {
   static public $isDecorated = false;
 
-  function initialize($context, $moduleName, $actionName, $viewName)
+  function initialize($context, $moduleName, $actionName, $viewName): void
   {
     $this->setDecorator(self::$isDecorated);
 

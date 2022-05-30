@@ -33,7 +33,7 @@ class sfTesterResponse extends sfTester
   /**
    * Initializes the tester.
    */
-  public function initialize()
+  public function initialize(): void
   {
     $this->response = $this->browser->getResponse();
 
@@ -120,10 +120,10 @@ class sfTesterResponse extends sfTester
 
   /**
    * Checks that a form is rendered correctly.
-   * 
+   *
    * @param  sfForm|string $form     A form object or the name of a form class
    * @param  string        $selector CSS selector for the root form element for this form
-   * 
+   *
    * @return sfTestFunctionalBase|sfTester
    */
   public function checkForm($form, $selector = 'form')
@@ -333,11 +333,11 @@ class sfTesterResponse extends sfTester
 
   /**
    * Tests if a cookie was set.
-   * 
+   *
    * @param  string $name
    * @param  string $value
    * @param  array  $attributes Other cookie attributes to check (expires, path, domain, etc)
-   * 
+   *
    * @return sfTestFunctionalBase|sfTester
    */
   public function setsCookie($name, $value = null, $attributes = array())

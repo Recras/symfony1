@@ -30,7 +30,7 @@ class sfTesterRequest extends sfTester
   /**
    * Initializes the tester.
    */
-  public function initialize()
+  public function initialize(): void
   {
     $this->request = $this->browser->getRequest();
   }

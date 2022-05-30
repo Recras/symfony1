@@ -43,7 +43,7 @@ abstract class sfTester
   /**
    * Initializes the tester.
    */
-  abstract public function initialize();
+  abstract public function initialize(): void;
 
   /**
    * Begins a block.

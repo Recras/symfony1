@@ -20,7 +20,7 @@ class myRequest extends sfWebRequest
   public $charsets = null;
   public $acceptableContentTypes = null;
 
-  public function initialize(sfEventDispatcher $dispatcher, $parameters = array(), $attributes = array(), $options = array())
+  public function initialize(sfEventDispatcher $dispatcher, $parameters = array(), $attributes = array(), $options = array()): void
   {
     if (isset($options['content_custom_only_for_test']))
     {

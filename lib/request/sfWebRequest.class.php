@@ -62,7 +62,7 @@ class sfWebRequest extends sfRequest
    *
    * @see sfRequest
    */
-  public function initialize(sfEventDispatcher $dispatcher, $parameters = array(), $attributes = array(), $options = array())
+  public function initialize(sfEventDispatcher $dispatcher, $parameters = array(), $attributes = array(), $options = array()): void
   {
     $options = array_merge(array(
       'path_info_key'   => 'PATH_INFO',

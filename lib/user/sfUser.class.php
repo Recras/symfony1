@@ -76,7 +76,7 @@ class sfUser implements ArrayAccess
    *
    * @return void
    */
-  public function initialize(sfEventDispatcher $dispatcher, sfStorage $storage, $options = array())
+  public function initialize(sfEventDispatcher $dispatcher, sfStorage $storage, $options = array()): void
   {
     $this->dispatcher = $dispatcher;
     $this->storage    = $storage;

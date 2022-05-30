@@ -49,7 +49,7 @@ class sfViewParameterHolder extends sfParameterHolder
    *
    * @throws sfInitializationException If an error occurs while initializing this view parameter holder.
    */
-  public function initialize(sfEventDispatcher $dispatcher, $parameters = array(), $options = array())
+  public function initialize(sfEventDispatcher $dispatcher, $parameters = array(), $options = array()): void
   {
     $this->dispatcher = $dispatcher;
 

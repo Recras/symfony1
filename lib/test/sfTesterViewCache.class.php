@@ -33,7 +33,7 @@ class sfTesterViewCache extends sfTester
   /**
    * Initializes the tester.
    */
-  public function initialize()
+  public function initialize(): void
   {
     $this->viewCacheManager = $this->browser->getContext()->getViewCacheManager();
     $this->routing = $this->browser->getContext()->getRouting();

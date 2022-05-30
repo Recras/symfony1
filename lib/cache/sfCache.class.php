@@ -54,7 +54,7 @@ abstract class sfCache
    *
    * @throws <b>sfInitializationException</b> If an error occurs while initializing this sfCache instance.
    */
-  public function initialize($options = array())
+  public function initialize($options = array()): void
   {
     $this->options = array_merge(array(
       'automatic_cleaning_factor' => 1000,

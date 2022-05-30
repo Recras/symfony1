@@ -17,7 +17,7 @@ class FooClass
     return $obj;
   }
 
-  public function initialize()
+  public function initialize(): void
   {
     $this->initialized = true;
   }

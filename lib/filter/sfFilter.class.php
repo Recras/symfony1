@@ -48,16 +48,14 @@ abstract class sfFilter
    * @param sfContext $context    The current application context
    * @param array     $parameters An associative array of initialization parameters
    *
-   * @return boolean|void true
+   * @return void
    */
-  public function initialize($context, $parameters = array())
+  public function initialize($context, $parameters = array()): void
   {
     $this->context = $context;
 
     $this->parameterHolder = new sfParameterHolder();
     $this->parameterHolder->add($parameters);
-
-    return true;
   }
 
   /**

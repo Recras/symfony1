@@ -25,7 +25,7 @@ class sfDoctrineFormFilterGenerator extends sfDoctrineFormGenerator
    *
    * @param sfGeneratorManager $generatorManager A sfGeneratorManager instance
    */
-  public function initialize(sfGeneratorManager $generatorManager)
+  public function initialize(sfGeneratorManager $generatorManager): void
   {
     parent::initialize($generatorManager);
 

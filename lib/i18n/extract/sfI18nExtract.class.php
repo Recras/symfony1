@@ -41,7 +41,7 @@ abstract class sfI18nExtract
    * @param string $culture     The culture
    * @param array  $parameters  An array of parameters
    */
-  function initialize(sfI18N $i18n, $culture, $parameters = array())
+  function initialize(sfI18N $i18n, $culture, $parameters = array()): void
   {
     $this->allSeenMessages = array();
     $this->newMessages = array();

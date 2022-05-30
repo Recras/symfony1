@@ -52,7 +52,7 @@ class sfPsrLoggerAdapter extends sfLogger
    *
    * @return void
    */
-  public function initialize(sfEventDispatcher $dispatcher, $options = array())
+  public function initialize(sfEventDispatcher $dispatcher, $options = array()): void
   {
     if (isset($options['logger_service_id']))
     {

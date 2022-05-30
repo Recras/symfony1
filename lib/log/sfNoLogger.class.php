@@ -26,7 +26,7 @@ class sfNoLogger extends sfLogger
    *
    * @return void
    */
-  public function initialize(sfEventDispatcher $dispatcher, $options = array())
+  public function initialize(sfEventDispatcher $dispatcher, $options = array()): void
   {
   }
 
