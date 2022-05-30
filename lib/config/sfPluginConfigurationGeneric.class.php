@@ -21,8 +21,7 @@ class sfPluginConfigurationGeneric extends sfPluginConfiguration
   /**
    * @see sfPluginConfiguration
    */
-  public function initialize(): bool
+  public function initialize(): void
   {
-    return false;
   }
 }
