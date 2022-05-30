@@ -46,7 +46,7 @@ abstract class sfConfigHandler
    *
    * @throws <b>sfInitializationException</b> If an error occurs while initializing this ConfigHandler
    */
-  public function initialize($parameters = null)
+  public function initialize($parameters = null): void
   {
     $this->parameterHolder = new sfParameterHolder();
     $this->parameterHolder->add($parameters);

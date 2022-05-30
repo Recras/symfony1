@@ -53,7 +53,7 @@ abstract class sfStorage
    *
    * @throws <b>sfInitializationException</b> If an error occurs while initializing this sfStorage
    */
-  public function initialize($options = array())
+  public function initialize($options = array()): void
   {
     $this->options = array_merge(array(
       'auto_shutdown' => true,

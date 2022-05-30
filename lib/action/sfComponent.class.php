@@ -58,7 +58,7 @@ abstract class sfComponent
    *
    * @return void
    */
-  public function initialize($context, $moduleName, $actionName)
+  public function initialize($context, $moduleName, $actionName): void
   {
     $this->moduleName             = $moduleName;
     $this->actionName             = $actionName;

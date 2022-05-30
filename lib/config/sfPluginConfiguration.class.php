@@ -73,7 +73,7 @@ abstract class sfPluginConfiguration
    *
    * @return boolean|null If false sfApplicationConfiguration will look for a config.php (maintains BC with symfony < 1.2)
    */
-  public function initialize()
+  public function initialize(): bool
   {
   }
 

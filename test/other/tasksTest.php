@@ -13,7 +13,7 @@ class sf_test_project
   public $t = null;
   public $current_dir = null;
 
-  public function initialize($t)
+  public function initialize($t): void
   {
     $this->t = $t;
 

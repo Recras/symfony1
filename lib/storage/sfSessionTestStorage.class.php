@@ -32,7 +32,7 @@ class sfSessionTestStorage extends sfStorage
    *
    * @see sfStorage
    */
-  public function initialize($options = null)
+  public function initialize($options = null): void
   {
     if (!isset($options['session_path']))
     {

@@ -103,7 +103,7 @@ abstract class sfView
    *
    * @return bool  true, if initialization completes successfully, otherwise false
    */
-  public function initialize($context, $moduleName, $actionName, $viewName)
+  public function initialize($context, $moduleName, $actionName, $viewName): bool
   {
     $this->moduleName = $moduleName;
     $this->actionName = $actionName;

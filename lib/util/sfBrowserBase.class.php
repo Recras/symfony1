@@ -58,7 +58,7 @@ abstract class sfBrowserBase
    *
    * @return void
    */
-  public function initialize($hostname = null, $remote = null, $options = array())
+  public function initialize($hostname = null, $remote = null, $options = array()): void
   {
     unset($_SERVER['argv'], $_SERVER['argc']);
 

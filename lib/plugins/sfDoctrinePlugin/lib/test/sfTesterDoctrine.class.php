@@ -28,7 +28,7 @@ class sfTesterDoctrine extends sfTester
   /**
    * Initializes the tester.
    */
-  public function initialize()
+  public function initialize(): void
   {
   }
 
@@ -105,7 +105,7 @@ class sfTesterDoctrine extends sfTester
 
   /**
    * Outputs some debug information about queries run during the current request.
-   * 
+   *
    * @param integer|string $limit Either an integer to return the last many queries, a regular expression or a substring to search for
    */
   public function debug($limit = null)

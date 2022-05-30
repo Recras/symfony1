@@ -47,7 +47,7 @@ class sfDoctrineDatabase extends sfDatabase
    * @param array $parameters  Array of parameters used to initialize the database connection
    * @return void
    */
-  public function initialize($parameters = array())
+  public function initialize($parameters = array()): void
   {
     parent::initialize($parameters);
 

@@ -35,7 +35,7 @@ class sfSQLiteCache extends sfCache
    * @see sfCache
    * @inheritdoc
    */
-  public function initialize($options = array())
+  public function initialize($options = array()): void
   {
     if (!extension_loaded('SQLite') && !extension_loaded('pdo_SQLite'))
     {

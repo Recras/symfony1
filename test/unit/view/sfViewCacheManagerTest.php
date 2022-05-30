@@ -72,7 +72,7 @@ class myCache extends sfCache
 {
   static public $cache = array();
 
-  public function initialize($parameters = array())
+  public function initialize($parameters = array()): void
   {
   }
 

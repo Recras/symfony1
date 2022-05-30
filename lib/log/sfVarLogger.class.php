@@ -34,7 +34,7 @@ class sfVarLogger extends sfLogger
    *
    * @return void
    */
-  public function initialize(sfEventDispatcher $dispatcher, $options = array())
+  public function initialize(sfEventDispatcher $dispatcher, $options = array()): void
   {
     $this->xdebugLogging = isset($options['xdebug_logging']) ? $options['xdebug_logging'] : false;
 

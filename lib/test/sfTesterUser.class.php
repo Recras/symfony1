@@ -30,7 +30,7 @@ class sfTesterUser extends sfTester
   /**
    * Initializes the tester.
    */
-  public function initialize()
+  public function initialize(): void
   {
     $this->user = $this->browser->getUser();
   }

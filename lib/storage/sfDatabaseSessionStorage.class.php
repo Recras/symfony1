@@ -24,7 +24,7 @@ abstract class sfDatabaseSessionStorage extends sfSessionStorage
   protected $db = null;
   /** @var PDO */
   protected $con = null;
-  
+
   /**
    * Available options:
    *
@@ -41,7 +41,7 @@ abstract class sfDatabaseSessionStorage extends sfSessionStorage
    *
    * @see sfSessionStorage
    */
-  public function initialize($options = array())
+  public function initialize($options = array()): void
   {
     $options = array_merge(array(
       'db_id_col'   => 'sess_id',

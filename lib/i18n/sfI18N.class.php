@@ -53,7 +53,7 @@ class sfI18N
    * @param sfCache                    $cache           A sfCache instance
    * @param array                      $options         An array of options
    */
-  public function initialize(sfApplicationConfiguration $configuration, sfCache $cache = null, $options = array())
+  public function initialize(sfApplicationConfiguration $configuration, sfCache $cache = null, $options = array()): void
   {
     $this->configuration = $configuration;
     $this->dispatcher = $configuration->getEventDispatcher();

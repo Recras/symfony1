@@ -80,7 +80,7 @@ abstract class sfApplicationConfiguration extends ProjectConfiguration
    *
    * Override this method if you want to customize your application initialization.
    */
-  public function initialize()
+  public function initialize(): void
   {
   }
 

@@ -49,7 +49,7 @@ class sfSessionStorage extends sfStorage
    *
    * @return void
    */
-  public function initialize($options = null)
+  public function initialize($options = null): void
   {
     $cookieDefaults = session_get_cookie_params();
 

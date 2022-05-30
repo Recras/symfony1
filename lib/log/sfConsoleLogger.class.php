@@ -26,7 +26,7 @@ class sfConsoleLogger extends sfStreamLogger
    *
    * @return void
    */
-  public function initialize(sfEventDispatcher $dispatcher, $options = array())
+  public function initialize(sfEventDispatcher $dispatcher, $options = array()): void
   {
     $options['stream'] = defined('STDOUT') ? STDOUT : fopen('php://stdout', 'w');
 

@@ -44,7 +44,7 @@ class sfCacheSessionStorage extends sfStorage
    *
    * @throws <b>sfInitializationException</b> If an error occurs while initializing this Storage.
    */
-  public function initialize($options = array())
+  public function initialize($options = array()): void
   {
     // initialize parent
 
@@ -160,8 +160,6 @@ class sfCacheSessionStorage extends sfStorage
     }
     session_id($this->id);
     $this->response->addCacheControlHttpHeader('private');
-
-    return true;
   }
 
   /**

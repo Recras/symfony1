@@ -45,7 +45,7 @@ class sfTesterForm extends sfTester
   /**
    * Initiliazes the tester.
    */
-  public function initialize()
+  public function initialize(): void
   {
     if (null === $this->form)
     {

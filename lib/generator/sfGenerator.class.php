@@ -24,7 +24,7 @@ abstract class sfGenerator
   protected $generatedModuleName = '';
   protected $theme = 'default';
   protected $moduleName = '';
-  
+
   /**
    * Class constructor.
    *
@@ -42,7 +42,7 @@ abstract class sfGenerator
    *
    * @param sfGeneratorManager $generatorManager A sfGeneratorManager instance
    */
-  public function initialize(sfGeneratorManager $generatorManager)
+  public function initialize(sfGeneratorManager $generatorManager): void
   {
     $this->generatorManager = $generatorManager;
   }

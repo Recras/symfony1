@@ -71,7 +71,7 @@ class sfContext implements ArrayAccess
    *
    * @param sfApplicationConfiguration $configuration  An sfApplicationConfiguration instance
    */
-  public function initialize(sfApplicationConfiguration $configuration)
+  public function initialize(sfApplicationConfiguration $configuration): void
   {
     $this->configuration = $configuration;
     $this->dispatcher    = $configuration->getEventDispatcher();

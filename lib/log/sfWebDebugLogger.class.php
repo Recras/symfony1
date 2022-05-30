@@ -39,7 +39,7 @@ class sfWebDebugLogger extends sfVarLogger
    *
    * @see sfVarLogger
    */
-  public function initialize(sfEventDispatcher $dispatcher, $options = array())
+  public function initialize(sfEventDispatcher $dispatcher, $options = array()): void
   {
     $this->context = sfContext::getInstance();
 

@@ -3,7 +3,7 @@
 /*
  * This file is part of the symfony package.
  * (c) 2004-2006 Fabien Potencier <fabien.potencier@symfony-project.com>
- * 
+ *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -23,11 +23,11 @@ class sfCommandLogger extends sfConsoleLogger
    * @param sfEventDispatcher $dispatcher A sfEventDispatcher instance
    * @param array             $options    An array of options.
    */
-  public function initialize(sfEventDispatcher $dispatcher, $options = array())
+  public function initialize(sfEventDispatcher $dispatcher, $options = array()): void
   {
     $dispatcher->connect('command.log', array($this, 'listenToLogEvent'));
 
-    return parent::initialize($dispatcher, $options);
+    parent::initialize($dispatcher, $options);
   }
 
   /**

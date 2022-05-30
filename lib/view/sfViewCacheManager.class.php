@@ -48,7 +48,7 @@ class sfViewCacheManager
    * @param sfContext $context  Current application context
    * @param sfCache   $cache    An sfCache instance
    */
-  public function initialize($context, sfCache $cache, $options = array())
+  public function initialize($context, sfCache $cache, $options = array()): void
   {
     $this->context    = $context;
     $this->dispatcher = $context->getEventDispatcher();

@@ -39,7 +39,7 @@ class sfMemcacheCache extends sfCache
    * @see sfCache
    * @inheritdoc
    */
-  public function initialize($options = array())
+  public function initialize($options = array()): void
   {
     parent::initialize($options);
 

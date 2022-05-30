@@ -44,7 +44,7 @@ class sfFileLogger extends sfLogger
    * @throws sfConfigurationException
    * @throws sfFileException
    */
-  public function initialize(sfEventDispatcher $dispatcher, $options = array())
+  public function initialize(sfEventDispatcher $dispatcher, $options = array()): void
   {
     if (!isset($options['file']))
     {
