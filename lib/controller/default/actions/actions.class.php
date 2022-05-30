@@ -18,7 +18,7 @@
  */
 class defaultActions extends sfActions
 {
-  protected $security = ['all' => ['is_secure' => false]];
+  protected array $security = ['all' => ['is_secure' => false]];
   /**
    * Congratulations page for creating an application
    *
