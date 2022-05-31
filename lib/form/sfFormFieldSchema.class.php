@@ -91,7 +91,7 @@ class sfFormFieldSchema extends sfFormField implements ArrayAccess, Iterator, Co
    *
    * @return Boolean true if the widget exists, false otherwise
    */
-  public function offsetExists($name)
+  public function offsetExists(mixed $name): bool
   {
     return isset($this->widget[$name]);
   }
@@ -204,7 +204,7 @@ class sfFormFieldSchema extends sfFormField implements ArrayAccess, Iterator, Co
    *
    * @return boolean The validity of the current element; true if it is valid
    */
-  public function valid()
+  public function valid(): bool
   {
     return $this->count > 0;
   }
@@ -214,7 +214,7 @@ class sfFormFieldSchema extends sfFormField implements ArrayAccess, Iterator, Co
    *
    * @return integer The number of embedded form fields
    */
-  public function count()
+  public function count(): int
   {
     return count($this->fieldNames);
   }
