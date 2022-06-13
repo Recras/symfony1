@@ -204,9 +204,9 @@ class sfToolkit
    *
    * @param  array $value  the value to strip
    *
-   * @return array clean value with slashes stripped
+   * @return array|string clean value with slashes stripped
    */
-  public static function stripslashesDeep($value)
+  public static function stripslashesDeep($value): array|string
   {
     return is_array($value) ? array_map(array('sfToolkit', 'stripslashesDeep'), $value) : stripslashes($value);
   }
