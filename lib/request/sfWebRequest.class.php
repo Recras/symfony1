@@ -173,9 +173,9 @@ class sfWebRequest extends sfRequest
    *
    * @return string
    */
-  public function getContentType($trim = true)
+  public function getContentType(bool $trim = true): string
   {
-    $contentType = $this->getHttpHeader('Content-Type', null);
+    $contentType = $this->getHttpHeader('Content-Type', null) ?? '';
 
     if ($trim && false !== $pos = strpos($contentType, ';'))
     {
@@ -570,9 +570,9 @@ class sfWebRequest extends sfRequest
    *
    * @param string $name The HTTP header name
    * @param string $prefix The HTTP header prefix
-   * @return string The value of HTTP header
+   * @return ?string The value of HTTP header
    */
-  public function getHttpHeader($name, $prefix = 'http')
+  public function getHttpHeader($name, $prefix = 'http'): ?string
   {
     if ($prefix)
     {
