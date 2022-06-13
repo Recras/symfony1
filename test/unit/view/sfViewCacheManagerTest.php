@@ -133,7 +133,7 @@ class myRouting extends sfPatternRouting
 {
   public $currentInternalUri = 'currentModule/currentAction?currentKey=currentValue';
 
-  public function getCurrentInternalUri($with_route_name = false)
+  public function getCurrentInternalUri($with_route_name = false): ?string
   {
     return $this->currentInternalUri;
   }

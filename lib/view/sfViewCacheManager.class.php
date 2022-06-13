@@ -22,15 +22,14 @@
  */
 class sfViewCacheManager
 {
-  protected
-    $cache       = null,
-    $cacheConfig = array(),
-    $context     = null,
-    $dispatcher  = null,
-    $controller  = null,
-    $routing     = null,
-    $request     = null,
-    $loaded      = array();
+  protected ?sfCache $cache = null;
+  protected array $cacheConfig = [];
+  protected ?sfContext $context = null;
+  protected ?sfEventDispatcher $dispatcher = null;
+  protected ?sfFrontWebController $controller = null;
+  protected ?sfRouting $routing = null;
+  protected ?sfRequest $request = null;
+  protected array $loaded = [];
 
   /**
    * Class constructor.
@@ -1001,11 +1000,11 @@ class sfViewCacheManager
    */
   public function getCurrentCacheKey()
   {
-    $cacheKey = $this->routing->getCurrentInternalUri();
+    $cacheKey = $this->routing->getCurrentInternalUri() ?? '';
 
     if ($getParameters = $this->request->getGetParameters())
     {
-      $cacheKey .= false === strpos($cacheKey, '?') ? '?' : '&';
+      $cacheKey .= str_contains($cacheKey, '?') ? '&' : '?';
       $cacheKey .= http_build_query($getParameters, '', '&');
     }
 

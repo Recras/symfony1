@@ -212,7 +212,7 @@ class sfContext implements ArrayAccess
    *
    * @return sfEventDispatcher An sfEventDispatcher instance
    */
-  public function getEventDispatcher()
+  public function getEventDispatcher(): ?sfEventDispatcher
   {
     return $this->dispatcher;
   }
@@ -249,7 +249,7 @@ class sfContext implements ArrayAccess
    *
    * @return sfFrontWebController The current sfController implementation instance.
    */
-  public function getController()
+  public function getController(): ?sfFrontWebController
   {
     return isset($this->factories['controller']) ? $this->factories['controller'] : null;
   }
@@ -407,9 +407,9 @@ class sfContext implements ArrayAccess
   /**
    * Retrieve the routing instance.
    *
-   * @return sfRouting The current sfRouting implementation instance.
+   * @return ?sfRouting The current sfRouting implementation instance.
    */
-  public function getRouting()
+  public function getRouting(): ?sfRouting
   {
     return isset($this->factories['routing']) ? $this->factories['routing'] : null;
   }
