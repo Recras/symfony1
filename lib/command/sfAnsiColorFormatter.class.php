@@ -79,7 +79,7 @@ class sfAnsiColorFormatter extends sfFormatter
 
     return "\033[".implode(';', $codes).'m'.$text."\033[0m";
   }
-  
+
   /**
    * Formats a message within a section.
    *
@@ -100,7 +100,7 @@ class sfAnsiColorFormatter extends sfFormatter
     $style = array_key_exists($style, $this->styles) ? $style : 'INFO';
     $width = 9 + strlen($this->format('', $style));
 
-    return sprintf(">> %-${width}s %s", $this->format($section, $style), $this->excerpt($text, $size - 4 - (strlen($section) > 9 ? strlen($section) : 9)));
+    return sprintf(">> %-{$width}s %s", $this->format($section, $style), $this->excerpt($text, $size - 4 - (strlen($section) > 9 ? strlen($section) : 9)));
   }
 
   /**
