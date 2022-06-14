@@ -20,7 +20,10 @@
  */
 class sfDoctrineConnectionListener extends Doctrine_EventListener
 {
-  public function __construct($connection, $encoding)
+  public Doctrine_Connection $connection;
+  public string $encoding;
+
+  public function __construct(Doctrine_Connection $connection, string $encoding)
   {
     $this->connection = $connection;
     $this->encoding = $encoding;
