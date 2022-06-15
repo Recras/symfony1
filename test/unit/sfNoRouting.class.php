@@ -21,7 +21,7 @@ class sfNoRouting extends sfRouting
   /**
    * @see sfRouting
    */
-  public function getCurrentInternalUri($with_route_name = false)
+  public function getCurrentInternalUri($with_route_name = false): ?string
   {
     $parameters = $this->mergeArrays($this->defaultParameters, $_GET);
     $action = sprintf('%s/%s', $parameters['module'], $parameters['action']);

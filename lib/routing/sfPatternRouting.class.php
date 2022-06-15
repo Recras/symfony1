@@ -130,7 +130,7 @@ class sfPatternRouting extends sfRouting
    * @see sfRouting
    * @inheritdoc
    */
-  public function getCurrentInternalUri($withRouteName = false)
+  public function getCurrentInternalUri($withRouteName = false): ?string
   {
     return null === $this->currentRouteName ? null : $this->currentInternalUri[$withRouteName ? 0 : 1];
   }

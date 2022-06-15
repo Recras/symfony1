@@ -125,9 +125,9 @@ abstract class sfRouting
    * @param  bool $with_route_name  Whether to give an internal URI with the route name (@route)
    *                                or with the module/action pair
    *
-   * @return string The current internal URI
+   * @return ?string The current internal URI
    */
-  abstract public function getCurrentInternalUri($with_route_name = false);
+  abstract public function getCurrentInternalUri($with_route_name = false): ?string;
 
   /**
    * Gets the current compiled route array.
