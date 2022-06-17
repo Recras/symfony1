@@ -22,8 +22,7 @@ class sfProjectConfiguration
   protected $rootDir = null;
   /** @var string */
   protected $symfonyLibDir = null;
-  /** @var sfEventDispatcher */
-  protected $dispatcher = null;
+  protected sfEventDispatcher $dispatcher;
   /** @var array */
   protected $plugins = array();
   /** @var array */
@@ -53,7 +52,7 @@ class sfProjectConfiguration
 
     $this->rootDir = null === $rootDir ? static::guessRootDir() : realpath($rootDir);
     $this->symfonyLibDir = realpath(__DIR__.'/..');
-    $this->dispatcher = null === $dispatcher ? new sfEventDispatcher() : $dispatcher;
+    $this->dispatcher = ($dispatcher instanceof sfEventDispatcher) ? $dispatcher : new sfEventDispatcher();
 
     ini_set('magic_quotes_runtime', 'off');
 
@@ -540,7 +539,7 @@ class sfProjectConfiguration
    *
    * @return sfEventDispatcher A sfEventDispatcher instance
    */
-  public function getEventDispatcher()
+  public function getEventDispatcher(): sfEventDispatcher
   {
     return $this->dispatcher;
   }

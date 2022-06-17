@@ -22,8 +22,7 @@
  */
 class sfContext implements ArrayAccess
 {
-  /** @var sfEventDispatcher */
-  protected $dispatcher = null;
+  protected sfEventDispatcher $dispatcher;
   /** @var sfApplicationConfiguration */
   protected $configuration = null;
   protected $serviceContainerConfiguration = array();
@@ -212,7 +211,7 @@ class sfContext implements ArrayAccess
    *
    * @return sfEventDispatcher An sfEventDispatcher instance
    */
-  public function getEventDispatcher(): ?sfEventDispatcher
+  public function getEventDispatcher(): sfEventDispatcher
   {
     return $this->dispatcher;
   }
