@@ -66,7 +66,7 @@ class sfValidatorDoctrineUnique extends sfValidatorSchema
   /**
    * @see sfValidatorBase
    */
-  protected function doClean($values)
+  protected function doClean($values): array
   {
     $originalValues = $values;
     $table = Doctrine_Core::getTable($this->getOption('model'));

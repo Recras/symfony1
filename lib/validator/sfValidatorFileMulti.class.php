@@ -6,7 +6,7 @@ class sfValidatorFileMulti extends sfValidatorFile
   /**
    * @see sfValidatorBase
    */
-  protected function doClean($value)
+  protected function doClean($value): array
   {
     $clean = array();
 

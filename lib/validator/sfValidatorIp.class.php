@@ -46,7 +46,7 @@ class sfValidatorIp extends sfValidatorString
     $this->setMessage('invalid', 'Ip address is invalid');
   }
 
-  protected function doClean($value)
+  protected function doClean($value): string
   {
     $value = parent::doClean($value);
 

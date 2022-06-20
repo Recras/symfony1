@@ -50,7 +50,7 @@ class sfValidatorString extends sfValidatorBase
   /**
    * @see sfValidatorBase
    */
-  protected function doClean($value)
+  protected function doClean($value): string
   {
     $clean = (string) $value;
 

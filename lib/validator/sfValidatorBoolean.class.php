@@ -43,7 +43,7 @@ class sfValidatorBoolean extends sfValidatorBase
   /**
    * @see sfValidatorBase
    */
-  protected function doClean($value)
+  protected function doClean($value): bool
   {
     if (in_array($value, $this->getOption('true_values')))
     {

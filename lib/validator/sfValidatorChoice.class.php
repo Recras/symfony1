@@ -47,20 +47,18 @@ class sfValidatorChoice extends sfValidatorBase
   /**
    * @see sfValidatorBase
    */
-  protected function doClean($value)
+  protected function doClean($value): array|string
   {
     $choices = $this->getChoices();
 
     if ($this->getOption('multiple'))
     {
-      $value = $this->cleanMultiple($value, $choices);
+      return $this->cleanMultiple($value, $choices);
     }
-    else
+
+    if (!self::inChoices($value, $choices))
     {
-      if (!self::inChoices($value, $choices))
-      {
-        throw new sfValidatorError($this, 'invalid', array('value' => $value));
-      }
+      throw new sfValidatorError($this, 'invalid', array('value' => $value));
     }
 
     return $value;
@@ -89,7 +87,7 @@ class sfValidatorChoice extends sfValidatorBase
    *
    * @return array The cleaned value
    */
-  protected function cleanMultiple($value, $choices)
+  protected function cleanMultiple($value, $choices): array
   {
     if (!is_array($value))
     {
@@ -160,7 +158,7 @@ class sfValidatorChoice extends sfValidatorBase
    *
    * @return Boolean
    */
-  static protected function inChoices($value, array $choices = array())
+  static protected function inChoices($value, array $choices = array()): bool
   {
     foreach ($choices as $choice)
     {

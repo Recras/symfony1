@@ -52,7 +52,7 @@ class sfValidatorDoctrineChoice extends sfValidatorBase
   /**
    * @see sfValidatorBase
    */
-  protected function doClean($value)
+  protected function doClean($value): array|string
   {
     if ($query = $this->getOption('query'))
     {

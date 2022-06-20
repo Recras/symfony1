@@ -64,7 +64,7 @@ class sfValidatorDate extends sfValidatorBase
   /**
    * @see sfValidatorBase
    */
-  protected function doClean($value)
+  protected function doClean($value): string
   {
     // check date format
     if (is_string($value) && $regex = $this->getOption('date_format'))
