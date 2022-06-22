@@ -50,7 +50,7 @@ class sfValidatorInteger extends sfValidatorBase
   /**
    * @see sfValidatorBase
    */
-  protected function doClean($value)
+  protected function doClean($value): int
   {
     $clean = (int) $value;
 

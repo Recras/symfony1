@@ -50,7 +50,7 @@ class sfValidatorNumber extends sfValidatorBase
   /**
    * @see sfValidatorBase
    */
-  protected function doClean($value)
+  protected function doClean($value): float
   {
     if (!is_numeric($value))
     {

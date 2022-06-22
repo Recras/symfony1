@@ -46,7 +46,7 @@ class sfValidatorDateRange extends sfValidatorBase
   /**
    * @see sfValidatorBase
    */
-  protected function doClean($value)
+  protected function doClean($value): array
   {
     $fromField = $this->getOption('from_field');
     $toField   = $this->getOption('to_field');

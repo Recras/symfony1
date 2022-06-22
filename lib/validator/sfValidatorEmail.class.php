@@ -21,7 +21,7 @@ class sfValidatorEmail extends sfValidatorBase
   /**
    * @see sfValidatorBase
    */
-  protected function doClean($value)
+  protected function doClean($value): string
   {
     $clean = filter_var($value, FILTER_VALIDATE_EMAIL);
     if (!$clean)
