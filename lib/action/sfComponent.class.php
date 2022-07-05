@@ -34,6 +34,7 @@ abstract class sfComponent
   protected $varHolder              = null;
   /** @var sfParameterHolder */
   protected $requestParameterHolder = null;
+  protected string $output = '';
 
   /**
    * Class constructor.

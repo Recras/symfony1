@@ -36,7 +36,7 @@ abstract class sfActions extends sfAction
    */
 
   protected array $data = [];
-  protected string $output = '';
+  public string $output = ''; // Allow access from other actions
 
   public function execute($request)
   {
