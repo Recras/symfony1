@@ -16,8 +16,6 @@
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @version    SVN: $Id$
  *
- * @property $firstOptional int
- * @property $segments array
  */
 class sfRoute
 {
@@ -38,6 +36,9 @@ class sfRoute
     $requirements      = array(),
     $tokens            = array(),
     $customToken       = false;
+  protected int $firstOptional = 0;
+  /** @var string[] */
+  protected array $segments = [];
 
   /**
    * Constructor.
