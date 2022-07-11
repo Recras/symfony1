@@ -172,6 +172,6 @@ class sfOutputEscaperArrayDecorator extends sfOutputEscaperGetterDecorator imple
    */
   public function getRaw($key)
   {
-    return $this->value[$key];
+    return array_key_exists($key, $this->value) ? $this->value[$key] : null;
   }
 }
