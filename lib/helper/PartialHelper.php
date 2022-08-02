@@ -84,7 +84,7 @@ function has_component_slot($name)
   {
     return false;
   }
-  
+
   // check to see if component slot is empty (null)
   if ($viewInstance->getComponentSlot($name))
   {
@@ -197,7 +197,7 @@ function include_partial($templateName, $vars = array())
  * @return string result of the partial execution
  * @see    include_partial
  */
-function get_partial($templateName, $vars = array())
+function get_partial($templateName, $vars = array()): string
 {
   $context = sfContext::getInstance();
 
