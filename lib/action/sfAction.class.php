@@ -253,7 +253,7 @@ abstract class sfAction extends sfComponent
    *
    * @return string sfView::NONE
    */
-  public function renderText($text)
+  public function renderText($text): string
   {
     $this->getResponse()->setContent($this->getResponse()->getContent().$text);
 
@@ -269,7 +269,7 @@ abstract class sfAction extends sfComponent
    *
    * @return string sfView::NONE
    */
-  public function renderJson($data)
+  public function renderJson($data): string
   {
     $this->getResponse()->setContentType('application/json');
     $this->getResponse()->setContent(json_encode($data, JSON_THROW_ON_ERROR));
@@ -291,7 +291,7 @@ abstract class sfAction extends sfComponent
    *
    * @return string The partial content
    */
-  public function getPartial($templateName, $vars = null)
+  public function getPartial($templateName, $vars = null): string
   {
     $this->getContext()->getConfiguration()->loadHelpers('Partial');
 
@@ -314,7 +314,7 @@ abstract class sfAction extends sfComponent
    *
    * @see    getPartial
    */
-  public function renderPartial($templateName, $vars = null)
+  public function renderPartial($templateName, $vars = null): string
   {
     return $this->renderText($this->getPartial($templateName, $vars));
   }
@@ -334,7 +334,7 @@ abstract class sfAction extends sfComponent
    *
    * @return string  The component rendered content
    */
-  public function getComponent($moduleName, $componentName, $vars = null)
+  public function getComponent($moduleName, $componentName, $vars = null): string
   {
     $this->getContext()->getConfiguration()->loadHelpers('Partial');
 
@@ -358,7 +358,7 @@ abstract class sfAction extends sfComponent
    *
    * @see    getComponent
    */
-  public function renderComponent($moduleName, $componentName, $vars = null)
+  public function renderComponent($moduleName, $componentName, $vars = null): string
   {
     return $this->renderText($this->getComponent($moduleName, $componentName, $vars));
   }

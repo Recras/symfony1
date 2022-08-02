@@ -81,7 +81,7 @@ class sfPartialView extends sfPHPView
    *
    * @return string Current template content
    */
-  public function render()
+  public function render(): string
   {
     if (sfConfig::get('sf_debug') && sfConfig::get('sf_logging_enabled'))
     {

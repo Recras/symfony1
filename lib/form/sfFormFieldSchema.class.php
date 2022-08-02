@@ -46,7 +46,7 @@ class sfFormFieldSchema extends sfFormField implements ArrayAccess, Iterator, Co
    *
    * @return string
    */
-  public function renderHiddenFields($recursive = true)
+  public function renderHiddenFields($recursive = true): string
   {
     $output = '';
 
