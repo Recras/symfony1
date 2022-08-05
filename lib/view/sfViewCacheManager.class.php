@@ -30,6 +30,7 @@ class sfViewCacheManager
   protected ?sfRouting $routing = null;
   protected ?sfRequest $request = null;
   protected array $loaded = [];
+  protected array $options = [];
 
   /**
    * Class constructor.
@@ -235,7 +236,7 @@ class sfViewCacheManager
       {
         $varys[] = $header . '-' . preg_replace('/\W+/', '_', $request->getHttpHeader($header));
       }
-      $vary = implode($varys, '-');
+      $vary = implode('-', $varys);
     }
 
     return $vary;
@@ -243,11 +244,8 @@ class sfViewCacheManager
 
   /**
    * Gets the hostname part of view cache key.
-   *
-   * @param string $hostName
-   * @return void
    */
-  protected function getCacheKeyHostNamePart($hostName = '')
+  protected function getCacheKeyHostNamePart(string $hostName = ''): string
   {
     if (!$this->options['cache_key_use_host_name'])
     {
