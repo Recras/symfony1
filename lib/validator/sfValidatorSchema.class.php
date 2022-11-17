@@ -84,16 +84,18 @@ class sfValidatorSchema extends sfValidatorBase implements ArrayAccess
 
   /**
    * @see sfValidatorBase
+   * @param iterable $values
    */
-  public function clean($values)
+  public function clean($values): array
   {
     return $this->doClean($values);
   }
 
   /**
    * @see sfValidatorBase
+   * @param iterable $values
    */
-  protected function doClean($values)
+  protected function doClean($values): array
   {
     if (null === $values)
     {
