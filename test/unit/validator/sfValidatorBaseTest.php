@@ -25,7 +25,7 @@ class ValidatorIdentity extends sfValidatorBase
     return $this->isEmpty($value);
   }
 
-  protected function doClean($value)
+  protected function doClean($value): mixed
   {
     return $value;
   }
@@ -38,7 +38,7 @@ class ValidatorIdentityWithRequired extends sfValidatorBase
     $this->addRequiredOption('foo');
   }
 
-  protected function doClean($value)
+  protected function doClean($value): mixed
   {
     return $value;
   }

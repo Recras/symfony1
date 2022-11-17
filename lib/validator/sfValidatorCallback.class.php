@@ -42,7 +42,7 @@ class sfValidatorCallback extends sfValidatorBase
   /**
    * @see sfValidatorBase
    */
-  protected function doClean($value)
+  protected function doClean($value): mixed
   {
     return call_user_func($this->getOption('callback'), $this, $value, $this->getOption('arguments'));
   }

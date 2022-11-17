@@ -99,7 +99,7 @@ class sfValidatorAnd extends sfValidatorBase
   /**
    * @see sfValidatorBase
    */
-  protected function doClean($value)
+  protected function doClean($value): mixed
   {
     $clean = $value;
     $errors = new sfValidatorErrorSchema($this);
