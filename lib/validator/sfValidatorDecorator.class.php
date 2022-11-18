@@ -60,7 +60,7 @@ abstract class sfValidatorDecorator extends sfValidatorBase
   /**
    * @see sfValidatorBase
    */
-  public function clean($value)
+  public function clean($value): mixed
   {
     return $this->doClean($value);
   }
@@ -68,7 +68,7 @@ abstract class sfValidatorDecorator extends sfValidatorBase
   /**
    * @see sfValidatorBase
    */
-  protected function doClean($value)
+  protected function doClean($value): mixed
   {
     return $this->validator->clean($value);
   }

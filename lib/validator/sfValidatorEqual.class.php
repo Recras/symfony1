@@ -48,7 +48,7 @@ class sfValidatorEqual extends sfValidatorBase
   /**
    * @see sfValidatorBase
    */
-  protected function doClean($value)
+  protected function doClean($value): mixed
   {
     $isStrict = $this->getOption('strict');
 

@@ -303,7 +303,7 @@ abstract class sfValidatorBase
    *
    * @throws sfValidatorError
    */
-  public function clean($value)
+  public function clean($value): mixed
   {
     $clean = $value;
 
@@ -338,7 +338,7 @@ abstract class sfValidatorBase
    *
    * @throws sfValidatorError
    */
-  abstract protected function doClean($value);
+  abstract protected function doClean($value): mixed;
 
   /**
    * Sets the charset to use when validating strings.

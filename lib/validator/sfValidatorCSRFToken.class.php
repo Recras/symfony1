@@ -33,7 +33,7 @@ class sfValidatorCSRFToken extends sfValidatorBase
   /**
    * @see sfValidatorBase
    */
-  protected function doClean($value)
+  protected function doClean($value): mixed
   {
     if ($value != $this->getOption('token'))
     {

@@ -14,7 +14,7 @@ $t = new lime_test(94);
 
 class PreValidator extends sfValidatorBase
 {
-  protected function doClean($values)
+  protected function doClean($values): array
   {
     if (isset($values['s1']) && isset($values['s2']))
     {
@@ -27,7 +27,7 @@ class PreValidator extends sfValidatorBase
 
 class PostValidator extends sfValidatorBase
 {
-  protected function doClean($values)
+  protected function doClean($values): array
   {
     foreach ($values as $key => $value)
     {
@@ -40,9 +40,11 @@ class PostValidator extends sfValidatorBase
 
 class Post1Validator extends sfValidatorBase
 {
-  protected function doClean($values)
+  protected function doClean($values): mixed
   {
-    if ($values['s1'] == $values['s2'])
+    if ($values['s1'] == $values['s2']) {
+      return $values;
+    }
 
     throw new sfValidatorError($this, 's1_not_equal_s2', array('value' => $values));
   }

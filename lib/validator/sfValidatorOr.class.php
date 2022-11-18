@@ -88,7 +88,7 @@ class sfValidatorOr extends sfValidatorBase
   /**
    * @see sfValidatorBase
    */
-  protected function doClean($value)
+  protected function doClean($value): mixed
   {
     $errors = new sfValidatorErrorSchema($this);
     foreach ($this->validators as $validator)
