@@ -30,6 +30,7 @@ class sfViewCacheManager
   protected ?sfRouting $routing = null;
   protected ?sfRequest $request = null;
   protected array $loaded = [];
+  protected array $options = [];
 
   /**
    * Class constructor.
