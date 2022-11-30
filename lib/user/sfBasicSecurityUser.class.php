@@ -269,21 +269,26 @@ class sfBasicSecurityUser extends sfUser implements sfSecurityUser
     }
     else
     {
-      // Automatic logout logged in user if no request within timeout parameter seconds
-      $timeout = $this->options['timeout'];
-      if (false !== $timeout && null !== $this->lastRequest && time() - $this->lastRequest >= $timeout)
-      {
-        if ($this->options['logging'])
-        {
-          $this->dispatcher->notify(new sfEvent($this, 'application.log', array('Automatic user logout due to timeout')));
-        }
-
-        $this->setTimedOut();
-        $this->setAuthenticated(false);
-      }
+      $this->checkTimeout();
     }
 
     $this->lastRequest = time();
+  }
+
+  public function checkTimeout(): void
+  {
+    // Automatic logout logged in user if no request within timeout parameter seconds
+    $timeout = $this->options['timeout'];
+    if (false !== $timeout && null !== $this->lastRequest && time() - $this->lastRequest >= $timeout)
+    {
+      if ($this->options['logging'])
+      {
+        $this->dispatcher->notify(new sfEvent($this, 'application.log', array('Automatic user logout due to timeout')));
+      }
+
+      $this->setTimedOut();
+      $this->setAuthenticated(false);
+    }    
   }
 
   public function shutdown()
