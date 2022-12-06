@@ -271,8 +271,6 @@ class sfBasicSecurityUser extends sfUser implements sfSecurityUser
     {
       $this->checkTimeout();
     }
-
-    $this->lastRequest = time();
   }
 
   public function checkTimeout(): void
@@ -294,7 +292,7 @@ class sfBasicSecurityUser extends sfUser implements sfSecurityUser
   public function shutdown()
   {
     // write the last request time to the storage
-    $this->storage->write(self::LAST_REQUEST_NAMESPACE, $this->lastRequest);
+    $this->storage->write(self::LAST_REQUEST_NAMESPACE, time());
 
     $this->storage->write(self::AUTH_NAMESPACE,         $this->authenticated);
     $this->storage->write(self::CREDENTIAL_NAMESPACE,   $this->credentials);
