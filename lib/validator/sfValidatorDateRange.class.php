@@ -33,7 +33,7 @@ class sfValidatorDateRange extends sfValidatorBase
    *
    * @see sfValidatorBase
    */
-  protected function configure($options = array(), $messages = array())
+  protected function configure(array $options = [], array $messages = []): void
   {
     $this->setMessage('invalid', 'The begin date must be before the end date.');
 

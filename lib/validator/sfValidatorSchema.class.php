@@ -73,7 +73,7 @@ class sfValidatorSchema extends sfValidatorBase implements ArrayAccess
    *
    * @see sfValidatorBase
    */
-  protected function configure($options = array(), $messages = array())
+  protected function configure(array $options = [], array $messages = []): void
   {
     $this->addOption('allow_extra_fields', false);
     $this->addOption('filter_extra_fields', true);

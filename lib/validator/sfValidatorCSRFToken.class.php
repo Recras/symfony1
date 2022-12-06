@@ -21,7 +21,7 @@ class sfValidatorCSRFToken extends sfValidatorBase
   /**
    * @see sfValidatorBase
    */
-  protected function configure($options = array(), $messages = array())
+  protected function configure(array $options = [], array $messages = []): void
   {
     $this->addRequiredOption('token');
 

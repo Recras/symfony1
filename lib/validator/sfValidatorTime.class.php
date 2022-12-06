@@ -37,7 +37,7 @@ class sfValidatorTime extends sfValidatorBase
    *
    * @see sfValidatorBase
    */
-  protected function configure($options = array(), $messages = array())
+  protected function configure(array $options = [], array $messages = []): void
   {
     $this->addMessage('bad_format', '"%value%" does not match the time format (%time_format%).');
 
