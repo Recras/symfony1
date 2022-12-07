@@ -37,7 +37,7 @@ class sfValidatorIp extends sfValidatorString
   const IP_V6_ONLY_PUBLIC = '6_public';
   const IP_ALL_ONLY_PUBLIC = 'all_public';
 
-  public function configure($options = array(), $messages = array())
+  public function configure(array $options = [], array $messages = []): void
   {
     $this->addOption('version', self::IP_ALL);
 

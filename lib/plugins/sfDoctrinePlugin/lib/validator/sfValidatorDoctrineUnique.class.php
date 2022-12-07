@@ -52,7 +52,7 @@ class sfValidatorDoctrineUnique extends sfValidatorSchema
    *
    * @see sfValidatorBase
    */
-  protected function configure($options = array(), $messages = array())
+  protected function configure(array $options = [], array $messages = []): void
   {
     $this->addRequiredOption('model');
     $this->addRequiredOption('column');

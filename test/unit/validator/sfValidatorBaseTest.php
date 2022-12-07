@@ -14,7 +14,7 @@ $t = new lime_test(47);
 
 class ValidatorIdentity extends sfValidatorBase
 {
-  protected function configure($options = array(), $messages = array())
+  protected function configure(array $options = [], array $messages = []): void
   {
     $this->addOption('foo', 'bar');
     $this->addMessage('foo', 'bar');
@@ -33,7 +33,7 @@ class ValidatorIdentity extends sfValidatorBase
 
 class ValidatorIdentityWithRequired extends sfValidatorBase
 {
-  protected function configure($options = array(), $messages = array())
+  protected function configure(array $options = [], array $messages = []): void
   {
     $this->addRequiredOption('foo');
   }
