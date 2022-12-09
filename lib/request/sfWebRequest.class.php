@@ -32,8 +32,8 @@ class sfWebRequest extends sfRequest
     $acceptableContentTypes = null,
     $pathInfoArray          = null,
     $relativeUrlRoot        = null,
-    $getParameters          = null,
-    $postParameters         = null,
+    $getParameters          = [],
+    $postParameters         = [],
     $requestParameters      = null,
     $formats                = array(),
     $format                 = null,
@@ -331,20 +331,16 @@ class sfWebRequest extends sfRequest
 
   /**
    * Gets GET parameters from request
-   *
-   * @return array
    */
-  public function getGetParameters()
+  public function getGetParameters(): array
   {
     return $this->getParameters;
   }
 
   /**
    * Gets POST parameters from request
-   *
-   * @return array
    */
-  public function getPostParameters()
+  public function getPostParameters(): array
   {
     return $this->postParameters;
   }
