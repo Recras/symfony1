@@ -22,6 +22,10 @@
  */
 class sfDoctrineFormGenerator extends sfGenerator
 {
+  protected string $modelName;
+  protected array $params = [];
+  protected Doctrine_Table $table;
+
   /**
    * Array of all the loaded models
    *
