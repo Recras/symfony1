@@ -20,11 +20,6 @@ class formatActions extends sfActions
     }
   }
 
-  public function executeForTheIPhone($request)
-  {
-    $this->setTemplate('index');
-  }
-
   public function executeJs($request)
   {
     $request->setRequestFormat('js');
