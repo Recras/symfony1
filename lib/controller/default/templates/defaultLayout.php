@@ -11,10 +11,6 @@
 
 <link rel="shortcut icon" href="/favicon.ico" />
 
-<!--[if lt IE 7.]>
-<?php echo stylesheet_tag('/sf/sf_default/css/ie.css') ?>
-<![endif]-->
-
 </head>
 <body>
 <div class="sfTContainer">
