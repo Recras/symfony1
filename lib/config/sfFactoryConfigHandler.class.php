@@ -91,7 +91,8 @@ class sfFactoryConfigHandler extends sfYamlConfigHandler
 
         case 'request':
           $parameters['no_script_name'] = sfConfig::get('sf_no_script_name');
-          $instances[] = sprintf("  \$class = sfConfig::get('sf_factory_request', '%s');\n   \$this->factories['request'] = new \$class(\$this->dispatcher, array(), array(), sfConfig::get('sf_factory_request_parameters', %s), sfConfig::get('sf_factory_request_attributes', array()));", $class, var_export($parameters, true));
+          // new \$class(\$this->dispatcher, array(), array(), sfConfig::get('sf_factory_request_parameters', %s), sfConfig::get('sf_factory_request_attributes', array()))
+          $instances[] = "  \$this->factories['request'] = Symfony\Component\HttpFoundation\Request::createFromGlobals();";
           break;
 
         case 'response':
@@ -102,7 +103,7 @@ class sfFactoryConfigHandler extends sfYamlConfigHandler
 
         case 'storage':
           $defaultParameters = array();
-          $defaultParameters[] = sprintf("'auto_shutdown' => false, 'session_id' => \$this->getRequest()->getParameter('%s'),", $parameters['session_name']);
+          $defaultParameters[] = sprintf("'auto_shutdown' => false, 'session_id' => \$this->getRequest()->get('%s'),", $parameters['session_name']);
           if (is_subclass_of($class, 'sfDatabaseSessionStorage'))
           {
             $defaultParameters[] = sprintf("'database' => \$this->getDatabaseManager()->getDatabase('%s'),", isset($parameters['database']) ? $parameters['database'] : 'default');
@@ -113,7 +114,7 @@ class sfFactoryConfigHandler extends sfYamlConfigHandler
           break;
 
         case 'user':
-          $instances[] = sprintf("  \$class = sfConfig::get('sf_factory_user', '%s');\n  \$this->factories['user'] = new \$class(\$this->dispatcher, \$this->factories['storage'], array_merge(array('auto_shutdown' => false, 'culture' => \$this->factories['request']->getParameter('sf_culture')), sfConfig::get('sf_factory_user_parameters', %s)));", $class, var_export($parameters, true));
+          $instances[] = sprintf("  \$class = sfConfig::get('sf_factory_user', '%s');\n  \$this->factories['user'] = new \$class(\$this->dispatcher, \$this->factories['storage'], array_merge(array('auto_shutdown' => false, 'culture' => \$this->factories['request']->get('sf_culture')), sfConfig::get('sf_factory_user_parameters', %s)));", $class, var_export($parameters, true));
           break;
 
         case 'view_cache':
@@ -161,12 +162,15 @@ class sfFactoryConfigHandler extends sfYamlConfigHandler
             $cache = "    \$cache = null;\n";
           }
 
+          // TODO: fix 'context' option for sfRouting
+          // 'context' => \$this->factories['request']->getRequestContext()
           $instances[] = sprintf("  \$class = sfConfig::get('sf_factory_routing', '%s');\n".
                            "  %s\n".
-                           "\$this->factories['routing'] = new \$class(\$this->dispatcher, \$cache, array_merge(array('auto_shutdown' => false, 'context' => \$this->factories['request']->getRequestContext()), sfConfig::get('sf_factory_routing_parameters', %s)));\n".
+                           "\$this->factories['routing'] = new \$class(\$this->dispatcher, \$cache, array_merge(array('auto_shutdown' => false), sfConfig::get('sf_factory_routing_parameters', %s)));\n".
                            "if (\$parameters = \$this->factories['routing']->parse(\$this->factories['request']->getPathInfo()))\n".
                            "{\n".
-                           "  \$this->factories['request']->addRequestParameters(\$parameters);\n".
+                           "  unset(\$parameters['_sf_route']); ".
+                           "  \$this->factories['request']->attributes->add(\$parameters);\n".
                            "}\n",
                            $class, $cache, var_export($parameters, true)
                          );

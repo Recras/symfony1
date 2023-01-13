@@ -28,7 +28,7 @@ class sfViewCacheManager
   protected ?sfEventDispatcher $dispatcher = null;
   protected ?sfFrontWebController $controller = null;
   protected ?sfRouting $routing = null;
-  protected ?sfRequest $request = null;
+  protected ?Symfony\Component\HttpFoundation\Request $request = null;
   protected array $loaded = [];
   protected array $options = [];
 

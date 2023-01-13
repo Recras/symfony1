@@ -184,16 +184,16 @@ class sfException extends Exception
       $code = $response->getStatusCode();
       $text = $response->getStatusText();
 
-      $format = $request->getRequestFormat();
-      if (!$format)
-      {
-        $format = 'html';
-      }
+      // $format = $request->getRequestFormat();
+      // if (!$format)
+      // {
+      //   $format = 'html';
+      // }
 
-      if ($mimeType = $request->getMimeType($format))
-      {
-        $response->setContentType($mimeType);
-      }
+      // if ($mimeType = $request->getMimeType($format))
+      // {
+      //   $response->setContentType($mimeType);
+      // }
     }
     else
     {

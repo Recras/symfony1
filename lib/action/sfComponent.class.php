@@ -67,7 +67,6 @@ abstract class sfComponent
     $this->varHolder              = new sfParameterHolder();
     $this->request                = $context->getRequest();
     $this->response               = $context->getResponse();
-    $this->requestParameterHolder = $this->request->getParameterHolder();
   }
 
   /**
@@ -184,9 +183,7 @@ abstract class sfComponent
   /**
    * Returns the value of a request parameter.
    *
-   * This is a proxy method equivalent to:
-   *
-   * <code>$this->getRequest()->getParameterHolder()->get($name)</code>
+   * This is a proxy method
    *
    * @param string $name    The parameter name
    * @param mixed  $default The default value if parameter does not exist
@@ -195,22 +192,20 @@ abstract class sfComponent
    */
   public function getRequestParameter($name, $default = null)
   {
-    return $this->requestParameterHolder->get($name, $default);
+    return $this->request->get($name, $default);
   }
 
   /**
    * Returns true if a request parameter exists.
    *
-   * This is a proxy method equivalent to:
-   *
-   * <code>$this->getRequest()->getParameterHolder()->has($name)</code>
+   * This is a proxy method
    *
    * @param string $name The parameter name
    * @return boolean true if the request parameter exists, false otherwise
    */
   public function hasRequestParameter($name)
   {
-    return $this->requestParameterHolder->has($name);
+    return $this->request->has($name);
   }
 
   /**
