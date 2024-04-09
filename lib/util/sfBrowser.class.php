@@ -23,6 +23,8 @@ class sfBrowser extends sfBrowserBase
     $context          = null,
     $currentException = null;
 
+  protected array $rawConfiguration = [];
+
   /**
    * Calls a request to a uri.
    */

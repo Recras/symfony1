@@ -609,7 +609,7 @@ class sfDomCssSelector implements Countable, Iterator
    *
    * @return bool The validity of the current element; true if it is valid
    */
-  public function valid()
+  public function valid(): bool
   {
     return $this->count > 0;
   }
@@ -619,7 +619,7 @@ class sfDomCssSelector implements Countable, Iterator
    *
    * @param integer The number of matching nodes
    */
-  public function count()
+  public function count(): int
   {
     return count($this->nodes);
   }
