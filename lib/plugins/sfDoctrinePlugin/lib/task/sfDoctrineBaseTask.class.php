@@ -71,10 +71,10 @@ abstract class sfDoctrineBaseTask extends sfBaseTask
    * @param array|null        $names An array of names or NULL for all databases
    *
    * @return array An associative array of {@link sfDoctrineDatabase} objects and their names
-   * 
+   *
    * @throws InvalidArgumentException If a requested database is not a Doctrine database
    */
-  protected function getDoctrineDatabases(sfDatabaseManager $databaseManager, array $names = null)
+  protected function getDoctrineDatabases(?sfDatabaseManager $databaseManager, ?array $names = null)
   {
     $databases = array();
 
@@ -200,7 +200,7 @@ abstract class sfDoctrineBaseTask extends sfBaseTask
    * @param array $models An array of model definitions
    *
    * @return array An array of globals
-   * 
+   *
    * @see Doctrine_Import_Schema::getGlobalDefinitionKeys()
    */
   protected function filterSchemaGlobals(& $models)
@@ -222,10 +222,10 @@ abstract class sfDoctrineBaseTask extends sfBaseTask
 
   /**
    * Canonicalizes a model definition in preparation for merging.
-   * 
+   *
    * @param string $model      The model name
    * @param array  $definition The model definition
-   * 
+   *
    * @return array The canonicalized model definition
    */
   protected function canonicalizeModelDefinition($model, $definition)

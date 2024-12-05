@@ -20,7 +20,7 @@ class sfFormField
 {
   protected static
     $toStringException = null;
-  
+
   /** @var sfWidgetForm */
   protected $widget = null;
   /** @var null|sfFormField */
@@ -41,7 +41,7 @@ class sfFormField
    * @param string           $value  The field value
    * @param sfValidatorError $error  A sfValidatorError instance
    */
-  public function __construct(sfWidgetForm $widget, sfFormField $parent = null, $name, $value, sfValidatorError $error = null)
+  public function __construct(?sfWidgetForm $widget, ?sfFormField $parent = null, string $name, string $value, ?sfValidatorError $error = null)
   {
     $this->widget = $widget;
     $this->parent = $parent;
@@ -327,7 +327,7 @@ class sfFormField
     if ($this->error instanceof sfValidatorErrorSchema) {
       return $this->error->count() > 0;
     }
-    
+
     return $this->error !== null;
   }
 }

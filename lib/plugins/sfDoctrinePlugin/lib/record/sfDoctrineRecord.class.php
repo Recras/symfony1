@@ -240,7 +240,7 @@ abstract class sfDoctrineRecord extends Doctrine_Record
    * @return sfDoctrineRecord
    * @throws sfException if the field is not one of date, datetime, or timestamp types
    */
-  public function setDateTimeObject($dateFieldName, DateTime $dateTimeObject = null)
+  public function setDateTimeObject($dateFieldName, ?DateTime $dateTimeObject = null)
   {
     $type = $this->getTable()->getTypeOf($dateFieldName);
     if ($type == 'date' || $type == 'timestamp' || $type == 'datetime')

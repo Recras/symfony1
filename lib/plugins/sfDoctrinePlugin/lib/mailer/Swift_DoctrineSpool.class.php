@@ -84,7 +84,7 @@ class Swift_DoctrineSpool extends Swift_ConfigurableSpool
 
     $object->{$this->column} = serialize($message);
     $object->save();
-    
+
     $object->free(true);
   }
 
@@ -96,7 +96,7 @@ class Swift_DoctrineSpool extends Swift_ConfigurableSpool
    *
    * @return int The number of sent emails
    */
-  public function flushQueue(Swift_Transport $transport, &$failedRecipients = null)
+  public function flushQueue(?Swift_Transport $transport, &$failedRecipients = null)
   {
     $table = Doctrine_Core::getTable($this->model);
     $objects = $table->{$this->method}()->limit($this->getMessageLimit())->execute();
