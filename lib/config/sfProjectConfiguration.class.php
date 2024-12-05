@@ -602,7 +602,7 @@ class sfProjectConfiguration
    *
    * @return sfApplicationConfiguration A sfApplicationConfiguration instance
    */
-  static public function getApplicationConfiguration($application, $environment, $debug, $rootDir = null, sfEventDispatcher $dispatcher = null)
+  static public function getApplicationConfiguration($application, $environment, $debug, $rootDir = null, ?sfEventDispatcher $dispatcher = null)
   {
     $class = $application.'Configuration';
 
