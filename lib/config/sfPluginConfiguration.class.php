@@ -31,7 +31,7 @@ abstract class sfPluginConfiguration
    * @param string                 $rootDir       The plugin root directory
    * @param string                 $name          The plugin name
    */
-  public function __construct(sfProjectConfiguration $configuration, $rootDir = null, $name = null)
+  public function __construct(?sfProjectConfiguration $configuration, ?string $rootDir = null, ?string $name = null)
   {
     $this->configuration = $configuration;
     $this->dispatcher = $configuration->getEventDispatcher();

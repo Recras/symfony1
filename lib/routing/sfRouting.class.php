@@ -34,7 +34,7 @@ abstract class sfRouting
    * @param sfCache           $cache
    * @param array             $options
    */
-  public function __construct(sfEventDispatcher $dispatcher, sfCache $cache = null, $options = array())
+  public function __construct(sfEventDispatcher $dispatcher, ?sfCache $cache = null, $options = array())
   {
     $this->initialize($dispatcher, $cache, $options);
 
@@ -69,7 +69,7 @@ abstract class sfRouting
    * @param sfCache           $cache       An sfCache instance
    * @param array             $options     An associative array of initialization options.
    */
-  public function initialize(sfEventDispatcher $dispatcher, sfCache $cache = null, $options = array()): void
+  public function initialize(sfEventDispatcher $dispatcher, ?sfCache $cache = null, $options = array()): void
   {
     $this->dispatcher = $dispatcher;
 

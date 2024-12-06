@@ -28,7 +28,7 @@ class sfGeneratorManager
    * @param sfProjectConfiguration $configuration A sfProjectConfiguration instance
    * @param string                 $basePath      The base path for file generation
    */
-  public function __construct(sfProjectConfiguration $configuration, $basePath = null)
+  public function __construct(?sfProjectConfiguration $configuration, $basePath = null)
   {
     $this->configuration = $configuration;
     $this->basePath = $basePath;

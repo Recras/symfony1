@@ -377,7 +377,7 @@ abstract class sfFormDoctrine extends sfFormObject
    *
    * @return string The filename used to save the file
    */
-  protected function saveFile($field, $filename = null, sfValidatedFile $file = null)
+  protected function saveFile(string $field, ?string $filename = null, ?sfValidatedFile $file = null)
   {
     if (!$this->validatorSchema[$field] instanceof sfValidatorFile)
     {

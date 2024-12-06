@@ -46,7 +46,7 @@ class sfPatternRouting extends sfRouting
    * @see sfRouting
    * @inheritdoc
    */
-  public function initialize(sfEventDispatcher $dispatcher, sfCache $cache = null, $options = array()): void
+  public function initialize(sfEventDispatcher $dispatcher, ?sfCache $cache = null, $options = array()): void
   {
     $options = array_merge(array(
       'variable_prefixes'                => array(':'),
