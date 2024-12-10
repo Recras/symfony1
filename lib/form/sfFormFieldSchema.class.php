@@ -35,7 +35,7 @@ class sfFormFieldSchema extends sfFormField implements ArrayAccess, Iterator, Co
   public function __construct(
     sfWidgetFormSchema $widget,
     ?sfFormField $parent = null,
-    ?string $name = null,
+    string $name = '',
     array $values = [],
     ?sfValidatorError $error = null
   ) {
