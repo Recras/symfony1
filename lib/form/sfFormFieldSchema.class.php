@@ -29,12 +29,17 @@ class sfFormFieldSchema extends sfFormField implements ArrayAccess, Iterator, Co
    * @param sfWidgetFormSchema $widget A sfWidget instance
    * @param sfFormField        $parent The sfFormField parent instance (null for the root widget)
    * @param string             $name   The field name
-   * @param string             $value  The field value
+   * @param string             $values  The field value
    * @param sfValidatorError   $error  A sfValidatorError instance
    */
-  public function __construct(?sfWidgetFormSchema $widget, ?sfFormField $parent = null, ?string $name = null, string $value, ?sfValidatorError $error = null)
-  {
-    parent::__construct($widget, $parent, $name, $value, $error);
+  public function __construct(
+    sfWidgetFormSchema $widget,
+    ?sfFormField $parent = null,
+    string $name = '',
+    array $values = [],
+    ?sfValidatorError $error = null
+  ) {
+    parent::__construct($widget, $parent, $name, $values, $error);
 
     $this->fieldNames = $widget->getPositions();
   }
