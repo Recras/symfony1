@@ -38,15 +38,15 @@ class sfFormField
    * @param sfWidgetForm     $widget A sfWidget instance
    * @param sfFormField      $parent The sfFormField parent instance (null for the root widget)
    * @param string           $name   The field name
-   * @param string           $value  The field value
+   * @param string           $values  The field value
    * @param sfValidatorError $error  A sfValidatorError instance
    */
-  public function __construct(?sfWidgetForm $widget, ?sfFormField $parent = null, string $name, string $value, ?sfValidatorError $error = null)
+  public function __construct(sfWidgetForm $widget, ?sfFormField $parent = null, string $name = '', array $values = [], ?sfValidatorError $error = null)
   {
     $this->widget = $widget;
     $this->parent = $parent;
     $this->name   = $name;
-    $this->value  = $value;
+    $this->value  = $values;
     $this->error  = $error;
   }
 
