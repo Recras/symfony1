@@ -12,10 +12,7 @@
     "type": "library",
     "autoload": {
         "classmap": [
-            "lib/validator"
-        ],
-        "files": [
-            "autoload.php"
+            "lib"
         ]
     },
     "suggest": {
